@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Command Name="PLS"
+    xmlns="http://xml.spss.com/spss/extension" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/extension-1.0.xsd">
+  <Subcommand Name="" Occurrence="Required" IsArbitrary="True"/>
+  <Subcommand Name="ID">
+    <Parameter Name="Variable" ParameterType="VariableName"/>
+  </Subcommand>
+  <Subcommand Name="OUTDATASET">
+    <Parameter Name="CASES" ParameterType="DatasetName"/>
+    <Parameter Name="LATENTFACTORS" ParameterType="DatasetName"/>
+    <Parameter Name="PREDICTORS" ParameterType="DatasetName"/>
+  </Subcommand>
+  <Subcommand Name="CRITERIA">
+    <Parameter Name="LATENTFACTORS" ParameterType="Integer"/>
+  </Subcommand>
+  <Subcommand Name="MODEL" IsArbitrary="True"/>
+</Command>
