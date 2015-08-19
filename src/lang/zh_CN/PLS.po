@@ -1,0 +1,496 @@
+#/***********************************************************************
+# * Licensed Materials - Property of IBM 
+# *
+# * IBM SPSS Products: Statistics Common
+# *
+# * (C) Copyright IBM Corp. 1989, 2014
+# *
+# * US Government Users Restricted Rights - Use, duplication or disclosure
+# * restricted by GSA ADP Schedule Contract with IBM Corp. 
+# ************************************************************************/
+
+# NLS_ENCODING=UTF-8
+# IBMUPYTH
+
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-05-21 17:51+China Standard Time\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: PLS.py:108
+msgid "---"
+msgstr ""
+"---"
+
+#: PLS.py:133
+msgid "PLS object could not be created."
+msgstr ""
+"未能创建 PLS 对象。"
+
+#: PLS.py:259
+msgid "Illegal syntax: TO must be preceded and followed by valid variable names"
+msgstr ""
+"语法不合法：在 TO 前后必须存在有效的变量名"
+
+#: PLS.py:264
+msgid "TO could not be expanded: variable dictionary not available."
+msgstr ""
+"未能扩展 TO：变量字典不可用。"
+
+#: PLS.py:275
+msgid "TO could not be expanded"
+msgstr ""
+"未能扩展 TO"
+
+#: PLS.py:339
+msgid "Illegal syntax: REFERENCE=%s encountered after variable %s, without MLEVEL.  This value will be ignored."
+msgstr ""
+"语法不合法：遇到 REFERENCE=%s（位于变量 %s 之后），并且未指定 MLEVEL。将忽略此值。"
+
+#: PLS.py:341
+msgid "Illegal syntax: REFERENCE=%s encountered after variable %s, declared Scale by MLEVEL.  This value will be ignored."
+msgstr ""
+"语法不合法：遇到 REFERENCE=%s（位于变量 %s 之后），并且通过 MLEVEL 声明了标度。将忽略此值。"
+
+#: PLS.py:360
+msgid "Illegal syntax: MLEVEL=%s encountered after variable %s. Legal values are N, O, or S. MLEVEL will be ignored."
+msgstr ""
+"语法不合法：遇到 MLEVEL=%s（位于变量 %s 之后）。合法值为 N、O 或 S。将忽略 MLEVEL。"
+
+#: PLS.py:369
+msgid "Illegal syntax: %s encountered after variable %s, without required =."
+msgstr ""
+"语法不合法：遇到 %s（位于变量 %s 之后），没有必需的 =。"
+
+#: PLS.py:421
+msgid "Duplicated variables %s removed from dependent variable list."
+msgstr ""
+"从因变量列表中除去了重复的变量 %s。"
+
+#: PLS.py:425
+msgid "Duplicated variables %s removed from factor list."
+msgstr ""
+"从因子列表中除去了重复的变量 %s。"
+
+#: PLS.py:429
+msgid "Duplicated variables %s removed from covariate list."
+msgstr ""
+"从协变量列表中除去了重复的变量 %s。"
+
+#: PLS.py:437
+msgid "There must be at least one dependent variable!"
+msgstr ""
+"必须至少有一个因变量！"
+
+#: PLS.py:440
+msgid "PLS: Dependent variable %s removed from factor list."
+msgstr ""
+"PLS：从因子列表中除去了因变量 %s。"
+
+#: PLS.py:448
+msgid "PLS: Dependent variable %s removed from covariate list."
+msgstr ""
+"PLS：从协变量列表中除去了因变量 %s。"
+
+#: PLS.py:455
+msgid "There must be at least one independent variable!"
+msgstr ""
+"必须至少有一个自变量！"
+
+#: PLS.py:459
+msgid "Factor %s should not appear in covariate list"
+msgstr ""
+"因子 %s 不应出现在协变量列表中"
+
+#: PLS.py:461
+msgid "The number of latent factors to extract must be greater than zero"
+msgstr ""
+"要提取的潜在因子数必须大于零"
+
+#: PLS.py:463
+msgid "The ID variable was found in the list of dependent variables."
+msgstr ""
+"在因变量列表中找到 ID 变量。"
+
+#: PLS.py:465
+msgid "The ID variable was found in the list of factors."
+msgstr ""
+"在因子列表中找到 ID 变量。"
+
+#: PLS.py:467
+msgid "The ID variable was found in the list of covariates."
+msgstr ""
+"在协变量列表中找到 ID 变量。"
+
+#: PLS.py:469
+msgid "PLS: The ALL keyword is not supported."
+msgstr ""
+"PLS：不支持 ALL 关键字。"
+
+#: PLS.py:482
+msgid "Variable %s does not exist."
+msgstr ""
+"变量 %s 不存在。"
+
+#: PLS.py:484
+msgid "Variables %s do not exist."
+msgstr ""
+"变量 %s 不存在。"
+
+#: PLS.py:493
+msgid "Error: The dataset is weighted, but this procedure does not support weights."
+msgstr ""
+"错误：数据集已进行加权，但此过程不支持权重。"
+
+#: PLS.py:497
+msgid "Split File is not supported."
+msgstr ""
+"不支持拆分文件。"
+
+#: PLS.py:553
+msgid "Variable %s not found."
+msgstr ""
+"找不到变量 %s。"
+
+#: PLS.py:563
+msgid "Warning: String variable %s found without MLEVEL, or with MLEVEL=S. It will be treated as Nominal."
+msgstr ""
+"警告：找到不带 MLEVEL 或带有 MLEVEL=S 的字符串变量 %s。此变量将被视为名义变量。"
+
+#: PLS.py:567
+msgid "Warning: String variable %s found after WITH. It will be treated as if following BY."
+msgstr ""
+"警告：在 WITH 后面找到字符串变量 %s。它将被视为跟在 BY 之后。"
+
+#: PLS.py:571
+msgid "Warning: String variable %s found after WITH.  String values must follow BY."
+msgstr ""
+"警告：在 WITH 后面找到字符串变量 %s。字符串值必须跟在 BY 之后。"
+
+#: PLS.py:643
+msgid ""
+"A problem was encountered while executing the following syntax.\n\n%s"
+msgstr ""
+"执行以下语法时遇到问题。\n\n%s"
+
+#: PLS.py:680
+msgid ""
+"Problem while trying to add ID variable %s.\n%s"
+msgstr ""
+"尝试添加 ID 变量 %s 时遇到问题。\n%s"
+
+#: PLS.py:733 PLS.py:746 PLS.py:752
+msgid "Unable to locate reference category for variable %s. The last category will be used."
+msgstr ""
+"找不到变量 %s 的参考类别。将使用最后一个类别。"
+
+#: PLS.py:761
+msgid "PLS: weight variable %s is present in the model, but treated as an ordinary variable."
+msgstr ""
+"PLS：权重变量 %s 存在于模型中，但被视为普通变量。"
+
+#: PLS.py:794
+msgid "Ambiguity caused by a variable named P1."
+msgstr ""
+"名为 P1 的变量引起歧义。"
+
+#: PLS.py:875
+msgid "Undefined variable name was specified: "
+msgstr ""
+"指定了未定义的变量名："
+
+#: PLS.py:886
+msgid "PLS result cannot be computed due to singularity"
+msgstr ""
+"由于奇异性而无法计算 PLS 结果"
+
+#: PLS.py:905 PLS.py:914
+msgid "No more than %s latent factors can be extracted."
+msgstr ""
+"最多只能提取 %s 个潜在因子。"
+
+#: PLS.py:1084
+msgid "X variance exhausted"
+msgstr ""
+"X 方差已耗尽"
+
+#: PLS.py:1313
+msgid "PLS predicted values %s "
+msgstr ""
+"PLS 预测值 %s"
+
+#: PLS.py:1320
+msgid "PLS residual values %s "
+msgstr ""
+"PLS 残差值 %s "
+
+#: PLS.py:1328
+msgid "PLS scores %s "
+msgstr ""
+"PLS 得分 %s "
+
+#: PLS.py:1334
+msgid "Distance to Model %s"
+msgstr ""
+"与模型 %s 的距离"
+
+#: PLS.py:1362
+msgid "PLS weights %s "
+msgstr ""
+"PLS 权重 %s "
+
+#: PLS.py:1366
+msgid "PLS loadings %s "
+msgstr ""
+"PLS 载荷 %s "
+
+#: PLS.py:1385
+msgid "PLS parameters %s "
+msgstr ""
+"PLS 参数 %s"
+
+#: PLS.py:1389
+msgid "PLS VIP %s "
+msgstr ""
+"PLS VIP %s "
+
+#: PLS.py:1409
+msgid "Warning: procedure %s could not be started."
+msgstr ""
+"警告：未能启动过程 %s。"
+
+#: PLS.py:1439
+msgid "Procedure %s could not produce table %s."
+msgstr ""
+"过程 %s 未能生成表 %s。"
+
+#: PLS.py:1459
+msgid "Error trying to add text block %s:\n%s."
+msgstr ""
+"尝试添加文本块 %s 时出错：\n%s。"
+
+#: PLS.py:1466
+msgid "Error trying to end procedure %s."
+msgstr ""
+"尝试结束过程 %s 时出错。"
+
+#: PLS.py:1494
+msgid "Proportion of Variance Explained"
+msgstr ""
+"已解释的方差比例"
+
+#: PLS.py:1496 PLS.py:1516 PLS.py:1529 PLS.py:1539
+msgid "Latent Factors"
+msgstr ""
+"潜在因子"
+
+#: PLS.py:1498
+msgid "Statistics"
+msgstr ""
+"统计"
+
+#: PLS.py:1499
+msgid "Adjusted R-square"
+msgstr ""
+"调整后 R 方"
+
+#: PLS.py:1499
+msgid "Cumulative X Variance"
+msgstr ""
+"累积 X 方差"
+
+#: PLS.py:1499
+msgid "Cumulative Y Variance (R-square)"
+msgstr ""
+"累积 Y 方差（R 方）"
+
+#: PLS.py:1499
+msgid "X Variance"
+msgstr ""
+"X 方差"
+
+#: PLS.py:1499
+msgid "Y Variance"
+msgstr ""
+"Y 方差"
+
+#: PLS.py:1503
+msgid "Parameters"
+msgstr ""
+"参数"
+
+#: PLS.py:1505
+msgid "Independent Variables"
+msgstr ""
+"自变量"
+
+#: PLS.py:1506
+msgid "(Constant)"
+msgstr ""
+"(常量)"
+
+#: PLS.py:1507
+msgid "Dependent Variables"
+msgstr ""
+"因变量"
+
+#: PLS.py:1512
+msgid "Variable Importance in the Projection"
+msgstr ""
+"变量在投影中的重要性"
+
+#: PLS.py:1513 PLS.py:1863
+msgid "Cumulative Variable Importance"
+msgstr ""
+"累积变量重要性"
+
+#: PLS.py:1514 PLS.py:1527 PLS.py:1537
+msgid "Variables"
+msgstr ""
+"变量"
+
+#: PLS.py:1525 PLS.py:1794
+msgid "Weights"
+msgstr ""
+"权重"
+
+#: PLS.py:1535
+msgid "Loadings"
+msgstr ""
+"载荷"
+
+#: PLS.py:1546
+msgid "X-score %s"
+msgstr ""
+"X 得分 %s"
+
+#: PLS.py:1547
+msgid "Y-score %s"
+msgstr ""
+"Y 得分 %s"
+
+#: PLS.py:1549 PLS.py:1634 PLS.py:1663 PLS.py:1725
+msgid "Scores"
+msgstr ""
+"得分"
+
+#: PLS.py:1550
+msgid "Standardized Scores"
+msgstr ""
+"标准化得分"
+
+#: PLS.py:1551
+msgid "Cases"
+msgstr ""
+"个案"
+
+#: PLS.py:1553
+msgid "Latent Factor Scores"
+msgstr ""
+"潜在因子得分"
+
+#: PLS.py:1558
+msgid "Warnings"
+msgstr ""
+"警告"
+
+#: PLS.py:1618
+msgid "Regression Plot"
+msgstr ""
+"回归图"
+
+#: PLS.py:1618
+msgid "Y-Score 1"
+msgstr ""
+"Y 得分 1"
+
+#: PLS.py:1618 PLS.py:1626
+msgid "X-Score 1"
+msgstr ""
+"X 得分 1"
+
+#: PLS.py:1621 PLS.py:1629
+msgid "X-Score %s"
+msgstr ""
+"X 得分 %s"
+
+#: PLS.py:1624 PLS.py:1632
+msgid "Y-Score %s"
+msgstr ""
+"Y 得分 %s"
+
+#: PLS.py:1625 PLS.py:1633
+msgid "Regression Plot: Y-Scores vs. X-Scores"
+msgstr ""
+"回归图：Y 得分与 X 得分"
+
+#: PLS.py:1626
+msgid "Score Plot"
+msgstr ""
+"得分图"
+
+#: PLS.py:1626
+msgid "X-Score 2"
+msgstr ""
+"X 得分 2"
+
+#: PLS.py:1638
+msgid "Factor Weights 2 vs. 1"
+msgstr ""
+"因子权重 2 与 1"
+
+#: PLS.py:1638 PLS.py:1640
+msgid "Weight 1"
+msgstr ""
+"权重 1"
+
+#: PLS.py:1638 PLS.py:1641
+msgid "Weight 2"
+msgstr ""
+"权重 2"
+
+#: PLS.py:1640
+msgid "Factor Weights 3 vs. 1"
+msgstr ""
+"因子权重 3 与 1"
+
+#: PLS.py:1640 PLS.py:1641
+msgid "Weight 3"
+msgstr ""
+"权重 3"
+
+#: PLS.py:1641
+msgid "Factor Weights 3 vs. 2"
+msgstr ""
+"因子权重 3 与 2"
+
+#: PLS.py:1668 PLS.py:1735
+msgid "PLS plots are limited to %s cases, but there are %s cases in the data.  No plot will be produced."
+msgstr ""
+"PLS 图的个案数目限制为 %s 个，但数据中存在 %s 个个案。将不会生成任何图。"
+
+#: PLS.py:1672 PLS.py:1673 PLS.py:1798 PLS.py:1799
+msgid "PLS %s"
+msgstr ""
+"PLS %s"
+
+#: PLS.py:1831
+msgid "Variable Importance"
+msgstr ""
+"变量重要性"
+
+
+
