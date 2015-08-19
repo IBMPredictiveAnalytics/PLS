@@ -1,0 +1,496 @@
+#/***********************************************************************
+# * Licensed Materials - Property of IBM 
+# *
+# * IBM SPSS Products: Statistics Common
+# *
+# * (C) Copyright IBM Corp. 1989, 2014
+# *
+# * US Government Users Restricted Rights - Use, duplication or disclosure
+# * restricted by GSA ADP Schedule Contract with IBM Corp. 
+# ************************************************************************/
+
+# NLS_ENCODING=UTF-8
+# IBMUPYTH
+
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-05-21 17:51+China Standard Time\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: PLS.py:108
+msgid "---"
+msgstr ""
+"---"
+
+#: PLS.py:133
+msgid "PLS object could not be created."
+msgstr ""
+"Impossibile creare l'oggetto PLS."
+
+#: PLS.py:259
+msgid "Illegal syntax: TO must be preceded and followed by valid variable names"
+msgstr ""
+"Sintassi non valida: TO deve essere preceduto e seguito da nomi di variabili valide"
+
+#: PLS.py:264
+msgid "TO could not be expanded: variable dictionary not available."
+msgstr ""
+"Impossibile espandere TO: dizionario delle variabili non disponibile."
+
+#: PLS.py:275
+msgid "TO could not be expanded"
+msgstr ""
+"Impossibile espandere TO"
+
+#: PLS.py:339
+msgid "Illegal syntax: REFERENCE=%s encountered after variable %s, without MLEVEL.  This value will be ignored."
+msgstr ""
+"Sintassi non consentita: è stato rilevato REFERENCE=%s dopo la variabile %s, senza MLEVEL. Questo valore verrà ignorato."
+
+#: PLS.py:341
+msgid "Illegal syntax: REFERENCE=%s encountered after variable %s, declared Scale by MLEVEL.  This value will be ignored."
+msgstr ""
+"Sintassi non consentita: rilevato REFERENCE=%s dopo la variabile %s, dichiarata di scala da MLEVEL. Questo valore verrà ignorato."
+
+#: PLS.py:360
+msgid "Illegal syntax: MLEVEL=%s encountered after variable %s. Legal values are N, O, or S. MLEVEL will be ignored."
+msgstr ""
+"Sintassi non consentita: rilevato MLEVEL=%s dopo la variabile %s. I valori consentiti sono N, O o S. MLEVEL verrà ignorato."
+
+#: PLS.py:369
+msgid "Illegal syntax: %s encountered after variable %s, without required =."
+msgstr ""
+"Sintassi non consentita: rilevato %s dopo la variabile %s, senza il segno = richiesto."
+
+#: PLS.py:421
+msgid "Duplicated variables %s removed from dependent variable list."
+msgstr ""
+"Variabili duplicate %s eliminate dall'elenco delle variabili dipendenti."
+
+#: PLS.py:425
+msgid "Duplicated variables %s removed from factor list."
+msgstr ""
+"Variabili duplicate %s eliminate dall'elenco dei fattori."
+
+#: PLS.py:429
+msgid "Duplicated variables %s removed from covariate list."
+msgstr ""
+"Variabili duplicate %s eliminate dall'elenco delle covariate."
+
+#: PLS.py:437
+msgid "There must be at least one dependent variable!"
+msgstr ""
+"Deve essere presente almeno una variabile dipendente."
+
+#: PLS.py:440
+msgid "PLS: Dependent variable %s removed from factor list."
+msgstr ""
+"PLS: variabile dipendente %s rimossa dall'elenco di fattori."
+
+#: PLS.py:448
+msgid "PLS: Dependent variable %s removed from covariate list."
+msgstr ""
+"PLS: variabile dipendente %s rimossa dall'elenco delle covariate."
+
+#: PLS.py:455
+msgid "There must be at least one independent variable!"
+msgstr ""
+"Deve essere presente almeno una variabile indipendente."
+
+#: PLS.py:459
+msgid "Factor %s should not appear in covariate list"
+msgstr ""
+"Il fattore %s non deve figurare in un elenco delle covariate"
+
+#: PLS.py:461
+msgid "The number of latent factors to extract must be greater than zero"
+msgstr ""
+"Il numero di fattori latenti da estrarre deve essere maggiore di zero"
+
+#: PLS.py:463
+msgid "The ID variable was found in the list of dependent variables."
+msgstr ""
+"Variabile ID trovata nell'elenco delle variabili dipendenti."
+
+#: PLS.py:465
+msgid "The ID variable was found in the list of factors."
+msgstr ""
+"Variabile ID trovata nell'elenco di fattori."
+
+#: PLS.py:467
+msgid "The ID variable was found in the list of covariates."
+msgstr ""
+"Variabile ID trovata nell'elenco delle covariate."
+
+#: PLS.py:469
+msgid "PLS: The ALL keyword is not supported."
+msgstr ""
+"PLS: la parola chiave ALL non è supportata."
+
+#: PLS.py:482
+msgid "Variable %s does not exist."
+msgstr ""
+"La variabile %s non esiste."
+
+#: PLS.py:484
+msgid "Variables %s do not exist."
+msgstr ""
+"Le variabili %s non esistono."
+
+#: PLS.py:493
+msgid "Error: The dataset is weighted, but this procedure does not support weights."
+msgstr ""
+"Errore: il dataset è pesato, ma questa procedura non supporta i pesi."
+
+#: PLS.py:497
+msgid "Split File is not supported."
+msgstr ""
+"File suddiviso non supportato."
+
+#: PLS.py:553
+msgid "Variable %s not found."
+msgstr ""
+"Variabile %s non trovata."
+
+#: PLS.py:563
+msgid "Warning: String variable %s found without MLEVEL, or with MLEVEL=S. It will be treated as Nominal."
+msgstr ""
+"Avviso: variabile stringa %s trovata senza MLEVEL o con MLEVEL=S. Sarà trattata come Nominale."
+
+#: PLS.py:567
+msgid "Warning: String variable %s found after WITH. It will be treated as if following BY."
+msgstr ""
+"Avviso: variabile stringa %s trovata dopo WITH. Sarà considerata come se seguisse BY."
+
+#: PLS.py:571
+msgid "Warning: String variable %s found after WITH.  String values must follow BY."
+msgstr ""
+"Avviso: variabile stringa %s trovata dopo WITH. I valori stringa devono seguire BY."
+
+#: PLS.py:643
+msgid ""
+"A problem was encountered while executing the following syntax.\n\n%s"
+msgstr ""
+"Si è verificato un problema durante l'esecuzione della sintassi riportata di seguito.\n\n%s"
+
+#: PLS.py:680
+msgid ""
+"Problem while trying to add ID variable %s.\n%s"
+msgstr ""
+"Problema durante il tentativo di aggiunta della variabile ID %s.\n%s"
+
+#: PLS.py:733 PLS.py:746 PLS.py:752
+msgid "Unable to locate reference category for variable %s. The last category will be used."
+msgstr ""
+"Impossibile individuare la categoria di riferimento per la variabile %s. Verrà utilizzata l'ultima categoria."
+
+#: PLS.py:761
+msgid "PLS: weight variable %s is present in the model, but treated as an ordinary variable."
+msgstr ""
+"PLS: la variabile peso %s è presente nel modello, ma è considerata come una variabile ordinaria."
+
+#: PLS.py:794
+msgid "Ambiguity caused by a variable named P1."
+msgstr ""
+"Ambiguità causata da una variabile denominata P1."
+
+#: PLS.py:875
+msgid "Undefined variable name was specified: "
+msgstr ""
+"È stato specificato un nome di variabile non definito: "
+
+#: PLS.py:886
+msgid "PLS result cannot be computed due to singularity"
+msgstr ""
+"Impossibile calcolare il risultato PLS a causa di una singolarità"
+
+#: PLS.py:905 PLS.py:914
+msgid "No more than %s latent factors can be extracted."
+msgstr ""
+"Impossibile estrarre più di %s fattori latenti."
+
+#: PLS.py:1084
+msgid "X variance exhausted"
+msgstr ""
+"Varianza X esaurita"
+
+#: PLS.py:1313
+msgid "PLS predicted values %s "
+msgstr ""
+"Valori previsti PLS %s "
+
+#: PLS.py:1320
+msgid "PLS residual values %s "
+msgstr ""
+"Valori residui PLS %s "
+
+#: PLS.py:1328
+msgid "PLS scores %s "
+msgstr ""
+"Punteggi PLS %s "
+
+#: PLS.py:1334
+msgid "Distance to Model %s"
+msgstr ""
+"Distanza al modello %s"
+
+#: PLS.py:1362
+msgid "PLS weights %s "
+msgstr ""
+"Pesi PLS %s "
+
+#: PLS.py:1366
+msgid "PLS loadings %s "
+msgstr ""
+"Caricamenti PLS %s "
+
+#: PLS.py:1385
+msgid "PLS parameters %s "
+msgstr ""
+"Parametri PLS %s "
+
+#: PLS.py:1389
+msgid "PLS VIP %s "
+msgstr ""
+"VIP PLS %s "
+
+#: PLS.py:1409
+msgid "Warning: procedure %s could not be started."
+msgstr ""
+"Avviso: impossibile avviare la procedura %s."
+
+#: PLS.py:1439
+msgid "Procedure %s could not produce table %s."
+msgstr ""
+"La procedura %s non ha potuto generare la tabella %s."
+
+#: PLS.py:1459
+msgid "Error trying to add text block %s:\n%s."
+msgstr ""
+"Errore durante il tentativo di aggiunta del blocco di testo %s:\n%s."
+
+#: PLS.py:1466
+msgid "Error trying to end procedure %s."
+msgstr ""
+"Errore durante il tentativo di interruzione della procedura %s."
+
+#: PLS.py:1494
+msgid "Proportion of Variance Explained"
+msgstr ""
+"Proporzione della varianza spiegata"
+
+#: PLS.py:1496 PLS.py:1516 PLS.py:1529 PLS.py:1539
+msgid "Latent Factors"
+msgstr ""
+"Fattori latenti"
+
+#: PLS.py:1498
+msgid "Statistics"
+msgstr ""
+"Statistiche"
+
+#: PLS.py:1499
+msgid "Adjusted R-square"
+msgstr ""
+"R-quadrato adattato"
+
+#: PLS.py:1499
+msgid "Cumulative X Variance"
+msgstr ""
+"Varianza X cumulativa"
+
+#: PLS.py:1499
+msgid "Cumulative Y Variance (R-square)"
+msgstr ""
+"Varianza Y cumulativa (R-quadrato)"
+
+#: PLS.py:1499
+msgid "X Variance"
+msgstr ""
+"Varianza X"
+
+#: PLS.py:1499
+msgid "Y Variance"
+msgstr ""
+"Varianza Y"
+
+#: PLS.py:1503
+msgid "Parameters"
+msgstr ""
+"Parametri"
+
+#: PLS.py:1505
+msgid "Independent Variables"
+msgstr ""
+"Variabili indipendenti"
+
+#: PLS.py:1506
+msgid "(Constant)"
+msgstr ""
+"(Costante)"
+
+#: PLS.py:1507
+msgid "Dependent Variables"
+msgstr ""
+"Variabili dipendenti"
+
+#: PLS.py:1512
+msgid "Variable Importance in the Projection"
+msgstr ""
+"Importanza della variabile nella proiezione"
+
+#: PLS.py:1513 PLS.py:1863
+msgid "Cumulative Variable Importance"
+msgstr ""
+"Importanza delle variabili cumulative"
+
+#: PLS.py:1514 PLS.py:1527 PLS.py:1537
+msgid "Variables"
+msgstr ""
+"Variabili"
+
+#: PLS.py:1525 PLS.py:1794
+msgid "Weights"
+msgstr ""
+"Pesi"
+
+#: PLS.py:1535
+msgid "Loadings"
+msgstr ""
+"Caricamenti"
+
+#: PLS.py:1546
+msgid "X-score %s"
+msgstr ""
+"Punteggio %s di X"
+
+#: PLS.py:1547
+msgid "Y-score %s"
+msgstr ""
+"Punteggio %s di Y"
+
+#: PLS.py:1549 PLS.py:1634 PLS.py:1663 PLS.py:1725
+msgid "Scores"
+msgstr ""
+"Punteggi"
+
+#: PLS.py:1550
+msgid "Standardized Scores"
+msgstr ""
+"Punteggi standardizzati"
+
+#: PLS.py:1551
+msgid "Cases"
+msgstr ""
+"Casi"
+
+#: PLS.py:1553
+msgid "Latent Factor Scores"
+msgstr ""
+"Punteggi fattoriali latenti"
+
+#: PLS.py:1558
+msgid "Warnings"
+msgstr ""
+"Avvisi"
+
+#: PLS.py:1618
+msgid "Regression Plot"
+msgstr ""
+"Grafico di regressione"
+
+#: PLS.py:1618
+msgid "Y-Score 1"
+msgstr ""
+"Punteggio 1 di Y"
+
+#: PLS.py:1618 PLS.py:1626
+msgid "X-Score 1"
+msgstr ""
+"Punteggio 1 di X"
+
+#: PLS.py:1621 PLS.py:1629
+msgid "X-Score %s"
+msgstr ""
+"Punteggio %s di X"
+
+#: PLS.py:1624 PLS.py:1632
+msgid "Y-Score %s"
+msgstr ""
+"Punteggio %s di Y"
+
+#: PLS.py:1625 PLS.py:1633
+msgid "Regression Plot: Y-Scores vs. X-Scores"
+msgstr ""
+"Grafico di regressione: punteggi di Y rispetto a punteggi di X"
+
+#: PLS.py:1626
+msgid "Score Plot"
+msgstr ""
+"Grafico del punteggio"
+
+#: PLS.py:1626
+msgid "X-Score 2"
+msgstr ""
+"Punteggio X 2"
+
+#: PLS.py:1638
+msgid "Factor Weights 2 vs. 1"
+msgstr ""
+"Confronto tra pesi fattoriali 2 e 1"
+
+#: PLS.py:1638 PLS.py:1640
+msgid "Weight 1"
+msgstr ""
+"Peso 1"
+
+#: PLS.py:1638 PLS.py:1641
+msgid "Weight 2"
+msgstr ""
+"Peso 2"
+
+#: PLS.py:1640
+msgid "Factor Weights 3 vs. 1"
+msgstr ""
+"Confronto tra pesi fattoriali 3 e 1"
+
+#: PLS.py:1640 PLS.py:1641
+msgid "Weight 3"
+msgstr ""
+"Peso 3"
+
+#: PLS.py:1641
+msgid "Factor Weights 3 vs. 2"
+msgstr ""
+"Confronto tra pesi fattoriali 3 e 2"
+
+#: PLS.py:1668 PLS.py:1735
+msgid "PLS plots are limited to %s cases, but there are %s cases in the data.  No plot will be produced."
+msgstr ""
+"I grafici PLS sono limitati a %s casi, ma nei dati sono presenti %s casi. Non verrà prodotto alcun grafico."
+
+#: PLS.py:1672 PLS.py:1673 PLS.py:1798 PLS.py:1799
+msgid "PLS %s"
+msgstr ""
+"PLS %s"
+
+#: PLS.py:1831
+msgid "Variable Importance"
+msgstr ""
+"Importanza delle variabili"
+
+
+
