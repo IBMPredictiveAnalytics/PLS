@@ -1,0 +1,20 @@
+Name: PLS
+Command-Specs: plscommand.xml
+Code-Files: PLS.py
+Misc-Files: enabling_pls.pdf
+Summary: Partial least squares regression
+Description: This procedure estimates partial least squares (PLS, also
+  known as "projection to latent structure") regression models. PLS is
+  a predictive technique that is an alternative to ordinary least squa
+ res (OLS) regression, canonical correlation, or structural equation m
+ odeling, and it is particularly useful when predictor variables are h
+ ighly correlated or when the number of predictors exceeds the number 
+ of cases. 
+Author: IBM SPSS JKP, JMB
+Version: 1.3.10
+Product-Version: 18
+Date: 1/2/2014
+Categories: regression, partial least squares, latent
+Plugins: Python
+Python-Modules: scipy,numpy
+Translation-Catalogues: lang
