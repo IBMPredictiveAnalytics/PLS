@@ -1,0 +1,496 @@
+#/***********************************************************************
+# * Licensed Materials - Property of IBM 
+# *
+# * IBM SPSS Products: Statistics Common
+# *
+# * (C) Copyright IBM Corp. 1989, 2014
+# *
+# * US Government Users Restricted Rights - Use, duplication or disclosure
+# * restricted by GSA ADP Schedule Contract with IBM Corp. 
+# ************************************************************************/
+
+# NLS_ENCODING=UTF-8
+# IBMUPYTH
+
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-05-21 17:51+China Standard Time\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: PLS.py:108
+msgid "---"
+msgstr ""
+"---"
+
+#: PLS.py:133
+msgid "PLS object could not be created."
+msgstr ""
+"PLS 개체를 만들 수 없습니다."
+
+#: PLS.py:259
+msgid "Illegal syntax: TO must be preceded and followed by valid variable names"
+msgstr ""
+"잘못된 명령문: TO는 앞과 뒤에 유효한 변수 이름이 와야 함"
+
+#: PLS.py:264
+msgid "TO could not be expanded: variable dictionary not available."
+msgstr ""
+"TO를 확장할 수 없음: 변수 사전을 사용할 수 없습니다."
+
+#: PLS.py:275
+msgid "TO could not be expanded"
+msgstr ""
+"TO를 확장할 수 없음"
+
+#: PLS.py:339
+msgid "Illegal syntax: REFERENCE=%s encountered after variable %s, without MLEVEL.  This value will be ignored."
+msgstr ""
+"잘못된 명령문: REFERENCE=%s이(가) MLEVEL 없는 변수 %s 다음 발생했습니다.  이 값은 무시됩니다."
+
+#: PLS.py:341
+msgid "Illegal syntax: REFERENCE=%s encountered after variable %s, declared Scale by MLEVEL.  This value will be ignored."
+msgstr ""
+"잘못된 명령문: REFERENCE=%s이(가) MLEVEL이 선언한 척도인 변수 %s 다음 발생했습니다.  이 값은 무시됩니다."
+
+#: PLS.py:360
+msgid "Illegal syntax: MLEVEL=%s encountered after variable %s. Legal values are N, O, or S. MLEVEL will be ignored."
+msgstr ""
+"잘못된 명령문: MLEVEL=%s이(가) 변수 %s 다음 발생했습니다. 유효한 값은 N, O 또는 S입니다. MLEVEL이 무시됩니다."
+
+#: PLS.py:369
+msgid "Illegal syntax: %s encountered after variable %s, without required =."
+msgstr ""
+"잘못된 명령문: %s이(가) 필수 =가 없는 변수 %s 다음 발생했습니다."
+
+#: PLS.py:421
+msgid "Duplicated variables %s removed from dependent variable list."
+msgstr ""
+"중복된 변수 %s이(가) 종속변수 목록에서 제거되었습니다."
+
+#: PLS.py:425
+msgid "Duplicated variables %s removed from factor list."
+msgstr ""
+"중복된 변수 %s이(가) 요인 목록에서 제거되었습니다."
+
+#: PLS.py:429
+msgid "Duplicated variables %s removed from covariate list."
+msgstr ""
+"중복된 변수 %s이(가) 공변량 목록에서 제거되었습니다."
+
+#: PLS.py:437
+msgid "There must be at least one dependent variable!"
+msgstr ""
+"최소한 하나의 종속변수가 있어야 합니다!"
+
+#: PLS.py:440
+msgid "PLS: Dependent variable %s removed from factor list."
+msgstr ""
+"PLS: 종속변수 %s이(가) 요인 목록에서 제거되었습니다."
+
+#: PLS.py:448
+msgid "PLS: Dependent variable %s removed from covariate list."
+msgstr ""
+"PLS: 종속변수 %s이(가) 공변량 목록에서 제거되었습니다."
+
+#: PLS.py:455
+msgid "There must be at least one independent variable!"
+msgstr ""
+"최소한 하나의 독립변수가 있어야 합니다!"
+
+#: PLS.py:459
+msgid "Factor %s should not appear in covariate list"
+msgstr ""
+"요인 %s이(가) 공변량 목록에 나타나서는 안 됩니다."
+
+#: PLS.py:461
+msgid "The number of latent factors to extract must be greater than zero"
+msgstr ""
+"추출할 잠재 요인 수는 0보다 커야 합니다."
+
+#: PLS.py:463
+msgid "The ID variable was found in the list of dependent variables."
+msgstr ""
+"종속변수 목록에서 ID 변수를 찾았습니다."
+
+#: PLS.py:465
+msgid "The ID variable was found in the list of factors."
+msgstr ""
+"요인 목록에서 ID 변수를 찾았습니다."
+
+#: PLS.py:467
+msgid "The ID variable was found in the list of covariates."
+msgstr ""
+"공변량 목록에서 ID 변수를 찾았습니다."
+
+#: PLS.py:469
+msgid "PLS: The ALL keyword is not supported."
+msgstr ""
+"PLS: ALL 키워드는 지원되지 않습니다."
+
+#: PLS.py:482
+msgid "Variable %s does not exist."
+msgstr ""
+"변수 %s이(가) 존재하지 않습니다."
+
+#: PLS.py:484
+msgid "Variables %s do not exist."
+msgstr ""
+"변수 %s이(가) 존재하지 않습니다."
+
+#: PLS.py:493
+msgid "Error: The dataset is weighted, but this procedure does not support weights."
+msgstr ""
+"오류: 데이터 세트가 가중되었지만, 이 프로시저는 가중값을 지원하지 않습니다."
+
+#: PLS.py:497
+msgid "Split File is not supported."
+msgstr ""
+"파일 분할은 지원되지 않습니다."
+
+#: PLS.py:553
+msgid "Variable %s not found."
+msgstr ""
+"변수 %s을(를) 찾지 못했습니다."
+
+#: PLS.py:563
+msgid "Warning: String variable %s found without MLEVEL, or with MLEVEL=S. It will be treated as Nominal."
+msgstr ""
+"경고: MLEVEL이 없거나 MLEVEL=S인 문자변수 %s을(를) 찾았습니다. 이 변수는 명목으로 처리됩니다."
+
+#: PLS.py:567
+msgid "Warning: String variable %s found after WITH. It will be treated as if following BY."
+msgstr ""
+"경고: WITH 다음 문자변수 %s을(를) 찾았습니다. BY 다음에 오는 것으로 처리됩니다."
+
+#: PLS.py:571
+msgid "Warning: String variable %s found after WITH.  String values must follow BY."
+msgstr ""
+"경고: WITH 다음 문자변수 %s을(를) 찾았습니다.  문자열 값은 BY 뒤에 와야 합니다."
+
+#: PLS.py:643
+msgid ""
+"A problem was encountered while executing the following syntax.\n\n%s"
+msgstr ""
+"다음 명령문을 실행하던 중 문제가 발생했습니다.\n\n%s"
+
+#: PLS.py:680
+msgid ""
+"Problem while trying to add ID variable %s.\n%s"
+msgstr ""
+"ID 변수 %s을(를) 추가하려던 중 문제가 발생했습니다.\n%s"
+
+#: PLS.py:733 PLS.py:746 PLS.py:752
+msgid "Unable to locate reference category for variable %s. The last category will be used."
+msgstr ""
+"변수 %s에 대한 참조범주를 찾을 수 없습니다. 마지막 범주가 사용됩니다."
+
+#: PLS.py:761
+msgid "PLS: weight variable %s is present in the model, but treated as an ordinary variable."
+msgstr ""
+"PLS: 가중 변수 %s이(가) 모형에 있지만 일반 변수로 취급됩니다."
+
+#: PLS.py:794
+msgid "Ambiguity caused by a variable named P1."
+msgstr ""
+"이름이 P1인 변수로 인해 모호성 발생."
+
+#: PLS.py:875
+msgid "Undefined variable name was specified: "
+msgstr ""
+"정의되지 않은 변수 이름이 지정되었습니다. "
+
+#: PLS.py:886
+msgid "PLS result cannot be computed due to singularity"
+msgstr ""
+"비정칙으로 인해 PLS 결과를 계산할 수 없음"
+
+#: PLS.py:905 PLS.py:914
+msgid "No more than %s latent factors can be extracted."
+msgstr ""
+"%s 잠재 요인 이상은 추출할 수 없습니다."
+
+#: PLS.py:1084
+msgid "X variance exhausted"
+msgstr ""
+"X 분산 모두 사용"
+
+#: PLS.py:1313
+msgid "PLS predicted values %s "
+msgstr ""
+"PLS 예측값 %s "
+
+#: PLS.py:1320
+msgid "PLS residual values %s "
+msgstr ""
+"PLS 잔차값 %s "
+
+#: PLS.py:1328
+msgid "PLS scores %s "
+msgstr ""
+"PLS 점수 %s "
+
+#: PLS.py:1334
+msgid "Distance to Model %s"
+msgstr ""
+"모형 %s까지의 거리"
+
+#: PLS.py:1362
+msgid "PLS weights %s "
+msgstr ""
+"PLS 가중값 %s "
+
+#: PLS.py:1366
+msgid "PLS loadings %s "
+msgstr ""
+"PLS 적재량 %s "
+
+#: PLS.py:1385
+msgid "PLS parameters %s "
+msgstr ""
+"PLS 모수 %s "
+
+#: PLS.py:1389
+msgid "PLS VIP %s "
+msgstr ""
+"PLS VIP %s "
+
+#: PLS.py:1409
+msgid "Warning: procedure %s could not be started."
+msgstr ""
+"경고: 프로시저 %s을(를) 시작할 수 없습니다."
+
+#: PLS.py:1439
+msgid "Procedure %s could not produce table %s."
+msgstr ""
+"프로시저 %s이(가) 표 %s을(를) 작성할 수 없습니다."
+
+#: PLS.py:1459
+msgid "Error trying to add text block %s:\n%s."
+msgstr ""
+"텍스트 블록 %s을(를) 추가하는 중 오류 발생:\n%s."
+
+#: PLS.py:1466
+msgid "Error trying to end procedure %s."
+msgstr ""
+"프로시저 %s을(를) 종료하려던 중 오류가 발생했습니다."
+
+#: PLS.py:1494
+msgid "Proportion of Variance Explained"
+msgstr ""
+"설명된 분산의 비율"
+
+#: PLS.py:1496 PLS.py:1516 PLS.py:1529 PLS.py:1539
+msgid "Latent Factors"
+msgstr ""
+"잠재 요인"
+
+#: PLS.py:1498
+msgid "Statistics"
+msgstr ""
+"통계량"
+
+#: PLS.py:1499
+msgid "Adjusted R-square"
+msgstr ""
+"수정된 R-제곱"
+
+#: PLS.py:1499
+msgid "Cumulative X Variance"
+msgstr ""
+"누적 X 분산"
+
+#: PLS.py:1499
+msgid "Cumulative Y Variance (R-square)"
+msgstr ""
+"누적 Y 분산(R-제곱)"
+
+#: PLS.py:1499
+msgid "X Variance"
+msgstr ""
+"X 분산"
+
+#: PLS.py:1499
+msgid "Y Variance"
+msgstr ""
+"Y 분산"
+
+#: PLS.py:1503
+msgid "Parameters"
+msgstr ""
+"모수"
+
+#: PLS.py:1505
+msgid "Independent Variables"
+msgstr ""
+"독립변수(V)"
+
+#: PLS.py:1506
+msgid "(Constant)"
+msgstr ""
+"(상수)"
+
+#: PLS.py:1507
+msgid "Dependent Variables"
+msgstr ""
+"종속변수"
+
+#: PLS.py:1512
+msgid "Variable Importance in the Projection"
+msgstr ""
+"투영 시 변수 중요도"
+
+#: PLS.py:1513 PLS.py:1863
+msgid "Cumulative Variable Importance"
+msgstr ""
+"누적 변수 중요도"
+
+#: PLS.py:1514 PLS.py:1527 PLS.py:1537
+msgid "Variables"
+msgstr ""
+"변수"
+
+#: PLS.py:1525 PLS.py:1794
+msgid "Weights"
+msgstr ""
+"가중값"
+
+#: PLS.py:1535
+msgid "Loadings"
+msgstr ""
+"적재량"
+
+#: PLS.py:1546
+msgid "X-score %s"
+msgstr ""
+"X-점수 %s"
+
+#: PLS.py:1547
+msgid "Y-score %s"
+msgstr ""
+"Y-점수 %s"
+
+#: PLS.py:1549 PLS.py:1634 PLS.py:1663 PLS.py:1725
+msgid "Scores"
+msgstr ""
+"점수"
+
+#: PLS.py:1550
+msgid "Standardized Scores"
+msgstr ""
+"표준화된 점수"
+
+#: PLS.py:1551
+msgid "Cases"
+msgstr ""
+"케이스"
+
+#: PLS.py:1553
+msgid "Latent Factor Scores"
+msgstr ""
+"잠재 요인 점수"
+
+#: PLS.py:1558
+msgid "Warnings"
+msgstr ""
+"경고"
+
+#: PLS.py:1618
+msgid "Regression Plot"
+msgstr ""
+"회귀도표"
+
+#: PLS.py:1618
+msgid "Y-Score 1"
+msgstr ""
+"Y-점수 1"
+
+#: PLS.py:1618 PLS.py:1626
+msgid "X-Score 1"
+msgstr ""
+"X-점수 1"
+
+#: PLS.py:1621 PLS.py:1629
+msgid "X-Score %s"
+msgstr ""
+"X-점수 %s"
+
+#: PLS.py:1624 PLS.py:1632
+msgid "Y-Score %s"
+msgstr ""
+"Y-점수 %s"
+
+#: PLS.py:1625 PLS.py:1633
+msgid "Regression Plot: Y-Scores vs. X-Scores"
+msgstr ""
+"회귀도표: Y-점수 대 X-점수"
+
+#: PLS.py:1626
+msgid "Score Plot"
+msgstr ""
+"점수도표:"
+
+#: PLS.py:1626
+msgid "X-Score 2"
+msgstr ""
+"X-점수 2"
+
+#: PLS.py:1638
+msgid "Factor Weights 2 vs. 1"
+msgstr ""
+"요인 가중값 2대 1"
+
+#: PLS.py:1638 PLS.py:1640
+msgid "Weight 1"
+msgstr ""
+"가중값 1"
+
+#: PLS.py:1638 PLS.py:1641
+msgid "Weight 2"
+msgstr ""
+"가중값 2"
+
+#: PLS.py:1640
+msgid "Factor Weights 3 vs. 1"
+msgstr ""
+"요인 가중값 3대 1"
+
+#: PLS.py:1640 PLS.py:1641
+msgid "Weight 3"
+msgstr ""
+"가중값 3"
+
+#: PLS.py:1641
+msgid "Factor Weights 3 vs. 2"
+msgstr ""
+"요인 가중값 3대 2"
+
+#: PLS.py:1668 PLS.py:1735
+msgid "PLS plots are limited to %s cases, but there are %s cases in the data.  No plot will be produced."
+msgstr ""
+"PLS 도표는 %s 케이스에 제한되지만, 데이터에 %s 케이스가 있습니다.  도표가 작성되지 않습니다."
+
+#: PLS.py:1672 PLS.py:1673 PLS.py:1798 PLS.py:1799
+msgid "PLS %s"
+msgstr ""
+"PLS %s"
+
+#: PLS.py:1831
+msgid "Variable Importance"
+msgstr ""
+"변수 중요도"
+
+
+
