@@ -11,7 +11,7 @@
 # ************************************************************************/"""Partial Least Squares Regression Module"""
 
 __author__ =  'JB, JKP, spss'
-__version__=  '1.1.4'
+__version__=  '1.1.5'
 
 #Licensed Materials - Property of IBM
 #IBM SPSS Products: Statistics General
@@ -26,10 +26,27 @@ __version__=  '1.1.4'
 # 12-jun-2013 tweak translation setup
 # 12-dec-2013 deal with very long variable lists in UNIANOVA
 # 19-nov-2014 handle case of no covariates
+# 13-mar-2018 change None test to "is" to avoid warning exception
 
 import spss, re
 from random import uniform
 import textwrap
+
+# debugging
+    # makes debug apply only to the current thread
+#try:
+    #import wingdbstub
+    #if wingdbstub.debugger != None:
+        #import time
+        #wingdbstub.debugger.StopDebug()
+        #time.sleep(1)
+        #wingdbstub.debugger.StartDebug()
+    #import thread
+    #wingdbstub.debugger.SetDebugThreads({thread.get_ident(): 1}, default_policy=0)
+    ## for V19 use
+    ###    ###SpssClient._heartBeat(False)
+#except:
+    #pass
 
 try:
     import spssaux, spssdata, extension
@@ -1322,7 +1339,7 @@ class OutDatasetPredResid(OutDataset):
             vlbl = _("PLS residual values %s ")
             self._appendVarsToCursor(curs, self.pls.xlabels, vlbl, "resid_x_")
             self._appendVarsToCursor(curs, self.pls.ylabels, vlbl, "resid_y_")
-            if xhat == None or yhat == None:
+            if xhat is None or yhat is None:          # chg from ==
                 xhat, yhat = self._predictions()
             matrices.append(self.pls._X - xhat)
             matrices.append(self.pls._Y - yhat)
