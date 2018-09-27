@@ -11,7 +11,7 @@
 # ************************************************************************/"""Partial Least Squares Regression Module"""
 
 __author__ =  'JB, JKP, spss'
-__version__=  '1.1.5'
+__version__=  '1.1.6'
 
 #Licensed Materials - Property of IBM
 #IBM SPSS Products: Statistics General
@@ -27,6 +27,7 @@ __version__=  '1.1.5'
 # 12-dec-2013 deal with very long variable lists in UNIANOVA
 # 19-nov-2014 handle case of no covariates
 # 13-mar-2018 change None test to "is" to avoid warning exception
+# 31-may-2018 removed xtype arg from cg call as it is no longer defined in cg interface
 
 import spss, re
 from random import uniform
@@ -1041,7 +1042,8 @@ class PartialLeastSquares(object):
                         from sparse.linalg import cg
                     except:
                         from linalg import cg  # give up if this fails
-                w, info = cg(A - multiply(lamb,identity(n)), x, xtype=0)	# was: multiply(lamb,identity(n))
+                ###w, info = cg(A - multiply(lamb,identity(n)), x, xtype=0)	# was: multiply(lamb,identity(n))
+                w, info = cg(A - multiply(lamb,identity(n)), x)	# removed xtype=0, which is no longer defined
                 w = mat(w,dtype=float64)
             # what is going wrong when A is 1x1?  i.e. A - lamb*I = 0
             # then eigvector is 1
