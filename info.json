@@ -2,7 +2,7 @@
  "type": [ "Extension" ],
 "provider": [ "IBM" ],
 "software": [ "SPSS Statistics" ],
-"language": [ "Python 2" ],
+"language": [ "Python 3" ],
 "category": [ "Analysis" ],
 "promotion": [ "No" ] 
 }

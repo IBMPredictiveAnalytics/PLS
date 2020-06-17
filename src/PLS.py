@@ -4,7 +4,7 @@
 # *
 # * IBM SPSS Products: Statistics Common
 # *
-# * (C) Copyright IBM Corp. 1989, 2014
+# * (C) Copyright IBM Corp. 1989, 2020
 # *
 # * US Government Users Restricted Rights - Use, duplication or disclosure
 # * restricted by GSA ADP Schedule Contract with IBM Corp. 
@@ -53,23 +53,23 @@ try:
     import spssaux, spssdata, extension
 except:
     # nontranslatable messages...
-    print """This module requires the spssaux, spssdata, namedtuple and extension modules from
+    print("""This module requires the spssaux, spssdata, namedtuple and extension modules from
               SPSS Developer Central, www.spss.com/devcentral.  One or more was not found.
-              Please download these and try again"""
+              Please download these and try again""")
     raise ImportError
 if int(spssaux.__version__[0]) < 2 or int(spssdata.__version__[0]) < 2:
-    print """This module requires at least version 2.0.0 of spssaux and spssdata.  Please download a newer version from SPSS Developer Central"""
+    print("""This module requires at least version 2.0.0 of spssaux and spssdata.  Please download a newer version from SPSS Developer Central""")
     raise ImportError
 #if int(extension.__version__[0]) < 1 or (int(extension.__version__[0]) == 1 and int(extension.__version__[2]) < 1):
 #	print """This module requires at least version 1.1.0 of spssaux and spssdata.  Please download a newer version from SPSS Developer Central"""
 #	raise ImportError
 if [int(v) for v in extension.__version__.split(".")] < [1,1,0]:	  
-    print """This module requires at least version 1.1.0 of extension.py.  Please download a newer version from SPSS Developer Central"""
+    print("""This module requires at least version 1.1.0 of extension.py.  Please download a newer version from SPSS Developer Central""")
     raise ImportError
 from extension import Syntax, Template
 
 if spssaux.GetSPSSMajorVersion() < 16:
-    raise ImportError, "This module requires at least SPSS 16"
+    raise ImportError("This module requires at least SPSS 16")
 
 from warnings import filterwarnings
 filterwarnings(action='ignore', module="numpy", category=DeprecationWarning)
@@ -79,7 +79,7 @@ filterwarnings(action='ignore', module="scipy", category=DeprecationWarning)
 
 try:
     from scipy import *
-except ImportError, e:
+except ImportError as e:
     if not e.message.startswith("cannot import name"):
         raise ImportError("""This module requires scipy and numpy.  One or more was not found.  Please download
               from www.scipy.org and try again.  Be sure to get the version matching your Python version.""")
@@ -88,9 +88,9 @@ try:
     from numpy import *
     from scipy import linalg, Inf, random, sparse
 except:
-    print """This module requires scipy and numpy.  One or more was not found.  Please download
-              from www.scipy.org and try again.  Be sure to get the version matching your Python version."""
-    raise ImportError, "This module requires scipy and numpy."
+    print("""This module requires scipy and numpy.  One or more was not found.  Please download
+              from www.scipy.org and try again.  Be sure to get the version matching your Python version.""")
+    raise ImportError("This module requires scipy and numpy.")
 # end of nontranslatable messages
 
 def Run(args):
@@ -136,7 +136,7 @@ def Run(args):
             spss.Submit("DATASET NAME %s WINDOW=ASIS ." % dsn)
 
         pc = PLSController(dsn, plsArgs)
-    except PLSSyntaxException, e:
+    except PLSSyntaxException as e:
         proc = PLSRegressionProcedure(None)
         proc.Run(warnings=plsArgs.notifications+[str(e)], parameters=False, vip=False, weights=False, loadings=False, scores=False)
         return
@@ -144,7 +144,7 @@ def Run(args):
     pls = pc.PLS()
     try:
         pls.plsRegression()
-    except Exception, e:
+    except Exception as e:
         notify = plsArgs.notifications+[str(e)]
         if pls:
             notify += pls.notifications
@@ -666,7 +666,7 @@ OMSEND TAG='%(suppressTag)s'. """ % locals()
         spss.SetOutput("on")
         names = spssaux.GetVariableNamesList()
         labels = spssaux.GetVariableLabelsList()
-        labeldict = dict(zip(names, labels))
+        labeldict = dict(list(zip(names, labels)))
 
         if idcase:	# and idvariable not in names:
             setvars = set(allvars)
@@ -679,7 +679,7 @@ OMSEND TAG='%(suppressTag)s'. """ % locals()
             renvars = " ".join(rename)
             setdrop = setvars.difference(setnames.union(set([idvariable, "idcase__"])))
             #print setdrop
-            dropren = " ".join(["d%s" % i for i in xrange(len(rename))])
+            dropren = " ".join(["d%s" % i for i in range(len(rename))])
             dropvars = " ".join(setdrop)
             idvarcmds = """*OMS /DESTINATION VIEWER=NO /TAG='%(suppressTag)s' .
 MATCH FILES
@@ -704,7 +704,7 @@ DELETE VARIABLES idcase__ .
         # if there is, there will be a design variable labelled P1
         start = PLSController._P1_avoid(names, labels, dependent[0])
         end = len(names)
-        designvars = [(names[i], labels[i]) for i in xrange(start, end)]
+        designvars = [(names[i], labels[i]) for i in range(start, end)]
 
         designdict = dict(designvars)
         desi = [(name, PLSController._parselabel(label)) for name, label in designvars]
@@ -737,12 +737,12 @@ DELETE VARIABLES idcase__ .
             refcatdict[original] = name	# overwrite previous
 
         refcatvars = []
-        for original, name in refcatdict.iteritems():
+        for original, name in refcatdict.items():
             cats = catdict.get(original)
             labels = labeldict.get(original)
             # check if there is a user-specified reference category
             ref = refcats.get(original, -1)
-            if isinstance(ref, basestring):
+            if isinstance(ref, str):
                 # it must be a custom category...
                 try:
                     catLabel = byvallabdict[original][ref]
@@ -892,18 +892,18 @@ class PartialLeastSquares(object):
             vardict = spssaux.VariableDict(alloriginalvars)
             curs = spssdata.Spssdata(indexes=alloriginalvars,   omitmissing=True)
             if len(alloriginalvars)  != curs.numvars:  #undefined variable(s)?
-                raise AttributeError, _("Undefined variable name was specified: ") + " ".join(list(set(alloriginalvars) - set(curs.namelist)))
+                raise AttributeError(_("Undefined variable name was specified: ") + " ".join(list(set(alloriginalvars) - set(curs.namelist))))
             xlabels = [vardict.VariableLabel(var) for var in xvars]
             xlabels = [xlab if xlab else var for xlab, var in zip(xlabels, xvars)]
             ylabels = [vardict.VariableLabel(var) for var in yvars]
             ylabels = [ylab if ylab else var for ylab, var in zip(ylabels, yvars)]
 
             data = mat(curs.fetchall())
-            Ymat = mat(take(data, indices= range(0,numy), axis=1))
-            Xmat = mat(take(data, indices = range(numy, numx+numy), axis=1))
+            Ymat = mat(take(data, indices= list(range(0,numy)), axis=1))
+            Xmat = mat(take(data, indices = list(range(numy, numx+numy)), axis=1))
             curs.CClose()
         except linalg.LinAlgError:
-            print _("PLS result cannot be computed due to singularity")
+            print(_("PLS result cannot be computed due to singularity"))
             curs.CClose()
             # TODO: should really just return None
             raise
@@ -917,7 +917,7 @@ class PartialLeastSquares(object):
 
     def plsRegression(self, converge=1e-15):
         if self.m == 1:
-            for i in xrange(self.d):
+            for i in range(self.d):
                 self.NIPALS()
                 rq = self.c.T * self._eigenprob() * self.c
                 if rq < converge:
@@ -927,7 +927,7 @@ class PartialLeastSquares(object):
                 else:
                     p, q = self.deflate()
         else:
-            for i in xrange(self.d):
+            for i in range(self.d):
                 rq = self.extractFactor(converge)
                 if rq < converge:
                     self.d = i
@@ -980,7 +980,7 @@ class PartialLeastSquares(object):
             if lamb < converge:
                 return lamb
             self.c = c	# probably not needed
-        for i in xrange(100):
+        for i in range(100):
             conv0 = matrix(self.converge)
             self.NIPALS()
             if self.convergence(converge):
@@ -1084,7 +1084,7 @@ class PartialLeastSquares(object):
         ssy = self.ssy.tolist()
         ssy = ssy[0]
         ssk = []
-        for k in xrange(1,self.d+1):
+        for k in range(1,self.d+1):
             ssk.append(ssy[:k] + [0.0]*(self.d-k))
         ssk = matrix(ssk)		# (d*d)
         vip = vip * ssk.T		# (n*d)
@@ -1305,7 +1305,7 @@ class OutDataset(object):
         # convert one row at a time to list
         # append lists
         mlist = [m.tolist() for m in matrices]
-        for i in xrange(matrices[0].shape[0]):	# assume there is at least one matrix
+        for i in range(matrices[0].shape[0]):	# assume there is at least one matrix
             #yhatvalue = self._X[i] * self.B * self.ysd + intercept
             casevalues = []
             if varnames:
@@ -1347,8 +1347,8 @@ class OutDatasetPredResid(OutDataset):
             matrices.append(self.pls._Y - yhat)
         if scores:
             vlbl = _("PLS scores %s ")
-            self._appendVarsToCursor(curs, xrange(1,self.pls.d+1), vlbl, "scores_x_")
-            self._appendVarsToCursor(curs, xrange(1,self.pls.d+1), vlbl, "scores_y_")
+            self._appendVarsToCursor(curs, range(1,self.pls.d+1), vlbl, "scores_x_")
+            self._appendVarsToCursor(curs, range(1,self.pls.d+1), vlbl, "scores_y_")
             matrices.append(self.pls.T)
             matrices.append(self.pls.U)
         if distances:
@@ -1381,11 +1381,11 @@ class OutDatasetWeightsLoadings(OutDataset):
             W = self.pls.W
             W = W * (self.pls.P.T * W).I	# here W is really W*
             vlbl = _("PLS weights %s ")
-            self._appendVarsToCursor(curs, xrange(1,self.pls.d+1), vlbl, "weight")						
+            self._appendVarsToCursor(curs, range(1,self.pls.d+1), vlbl, "weight")						
             matrices.append(concatenate((W, self.pls.C), axis=0))
         if loadings:
             vlbl = _("PLS loadings %s ")
-            self._appendVarsToCursor(curs, xrange(1,self.pls.d+1), vlbl, "loading")						
+            self._appendVarsToCursor(curs, range(1,self.pls.d+1), vlbl, "loading")						
             matrices.append(concatenate((self.pls.P, self.pls.Q), axis=0))
         curs.commitdict()
         return  matrices
@@ -1410,7 +1410,7 @@ class OutDatasetPredictors(OutDataset):
             vlbl = _("PLS VIP %s ")
             # set vipvars to have user missing = -99999
             sysmiss = None	#-99999
-            vipvars = self._appendVarsToCursor(curs, xrange(1,self.pls.d+1), vlbl, "VIP_", missing=[-99999])						
+            vipvars = self._appendVarsToCursor(curs, range(1,self.pls.d+1), vlbl, "VIP_", missing=[-99999])						
             matrices.append(concatenate((matrix([None]*self.pls.d), self.pls.vip)))
         curs.commitdict()
         return matrices
@@ -1427,7 +1427,7 @@ class SPSSProcedure(object):
                 spss.StartProcedure(self.procedure)
             self._started = True
         except:
-            print _("Warning: procedure %s could not be started.") % self.procedure
+            print(_("Warning: procedure %s could not be started.") % self.procedure)
             self._started = False
 
     def matrixToTable(self,
@@ -1445,9 +1445,9 @@ class SPSSProcedure(object):
         # automatic labels for experimentation
         nrows, ncols = theMatrix.shape
         if rowlabels: pass
-        else: rowlabels = ["%s" % r for r in xrange(1, nrows+1)]
+        else: rowlabels = ["%s" % r for r in range(1, nrows+1)]
         if collabels: pass
-        else: collabels = ["%s" % c for c in xrange(1, ncols+1)]
+        else: collabels = ["%s" % c for c in range(1, ncols+1)]
         cells = theMatrix.tolist()
         #spss.StartProcedure(procedure)
         try:
@@ -1457,12 +1457,12 @@ class SPSSProcedure(object):
             # ecn139660: p.t. api will fail if cells is not flat and there is only one column
             table.SimplePivotTable(rowdim,rowlabels,coldim,collabels,flatten(cells))
         except:
-            print _("Procedure %s could not produce table %s.") % (self.procedure, title)
+            print(_("Procedure %s could not produce table %s.") % (self.procedure, title))
             #raise:
 
     def textBlock(self, title, lines=[]):
         if self._started and lines:
-            if isinstance(lines, basestring):
+            if isinstance(lines, str):
                 text = lines
             elif isinstance(lines, (list, tuple)):
                 text = "\n".join(lines)
@@ -1477,14 +1477,14 @@ class SPSSProcedure(object):
 #				for line in lines[1:]:
 #					text.append(line)
             except:
-                print _("Error trying to add text block %s:\n%s.") % (title, "\n".join(linelist))
+                print(_("Error trying to add text block %s:\n%s.") % (title, "\n".join(linelist)))
 
     def end(self):
         if self._started:
             try:
                 spss.EndProcedure()
             except:
-                print _("Error trying to end procedure %s.") % self.procedure
+                print(_("Error trying to end procedure %s.") % self.procedure)
         self._started = False
 
 class PLSRegressionProcedure(SPSSProcedure):
@@ -1564,8 +1564,8 @@ class PLSRegressionProcedure(SPSSProcedure):
     # with categories "X-scores" and "Y-scores"
     # i.e. no longer use .simpleOutputTable
     def outputScores(self):
-        scorelabels = [_("X-score %s") % i for i in xrange(1, self.pls.d+1)]
-        scorelabels += [_("Y-score %s") % i for i in xrange(1, self.pls.d+1)]
+        scorelabels = [_("X-score %s") % i for i in range(1, self.pls.d+1)]
+        scorelabels += [_("Y-score %s") % i for i in range(1, self.pls.d+1)]
         self.matrixToTable(concatenate((self.pls.T, self.pls.U), axis=1), 
                            title=_("Scores"), 
                            caption=_("Standardized Scores"),
@@ -1596,7 +1596,7 @@ def listify(x):
     """
     if not x:
         return []
-    if isinstance(x, basestring):
+    if isinstance(x, str):
         xlist = x.split()
     elif isinstance(x, (list, tuple)):
         xlist = []
@@ -1638,19 +1638,19 @@ class PlotController(object):
             if self.d == 1:
                 self.cases.plot("scores_x_1", "scores_y_1", _("X-Score 1"), _("Y-Score 1"), _("Regression Plot"))
             if self.d == 2:
-                variables = ["scores_x_%s" % i for i in xrange(1,self.d+1)]
-                variableLabels = [_("X-Score %s") % i for i in xrange(1,self.d+1)]
+                variables = ["scores_x_%s" % i for i in range(1,self.d+1)]
+                variableLabels = [_("X-Score %s") % i for i in range(1,self.d+1)]
 #				# temporary test
-                yvariables = ["scores_y_%s" % i for i in xrange(1,self.d+1)]
-                yvariableLabels = [_("Y-Score %s") % i for i in xrange(1,self.d+1)]
+                yvariables = ["scores_y_%s" % i for i in range(1,self.d+1)]
+                yvariableLabels = [_("Y-Score %s") % i for i in range(1,self.d+1)]
                 self.splom.plot(variables, variableLabels, yvariables, yvariableLabels, _("Regression Plot: Y-Scores vs. X-Scores"))
                 self.cases.plot("scores_x_1", "scores_x_2", _("X-Score 1"), _("X-Score 2"), _("Score Plot"))
             if self.d > 2:
-                variables = ["scores_x_%s" % i for i in xrange(1,self.d+1)]
-                variableLabels = [_("X-Score %s") % i for i in xrange(1,self.d+1)]
+                variables = ["scores_x_%s" % i for i in range(1,self.d+1)]
+                variableLabels = [_("X-Score %s") % i for i in range(1,self.d+1)]
                 # temporary test
-                yvariables = ["scores_y_%s" % i for i in xrange(1,self.d+1)]
-                yvariableLabels = [_("Y-Score %s") % i for i in xrange(1,self.d+1)]
+                yvariables = ["scores_y_%s" % i for i in range(1,self.d+1)]
+                yvariableLabels = [_("Y-Score %s") % i for i in range(1,self.d+1)]
                 self.splom.plot(variables, variableLabels, yvariables, yvariableLabels, _("Regression Plot: Y-Scores vs. X-Scores"))
                 self.splom.plot(variables, variableLabels, title=_("Scores"))
 
@@ -1686,7 +1686,7 @@ class CasePlot(Plot):
         if not dataset:
             return
         if self.N > self.maxCases:
-            print _("PLS plots are limited to %s cases, but there are %s cases in the data.  No plot will be produced.") % (self.maxCases, self.N)
+            print(_("PLS plots are limited to %s cases, but there are %s cases in the data.  No plot will be produced.") % (self.maxCases, self.N))
             return
         c = self.color
         id = self.id
@@ -1753,7 +1753,7 @@ class SPLOM(Plot):
         if not dataset:
             return
         if self.N > self.maxCases:
-            print _("PLS plots are limited to %s cases, but there are %s cases in the data.  No plot will be produced.") % (self.maxCases, self.N)
+            print(_("PLS plots are limited to %s cases, but there are %s cases in the data.  No plot will be produced.") % (self.maxCases, self.N))
             return
         data = "\n".join([""" DATA: %(var)s=col(source(s), name("%(var)s"))""" % {"var":var} for var in (variables+yvariables)])
         if c:
@@ -1884,11 +1884,11 @@ class VIPPlots(Plot):
             title=_("Cumulative Variable Importance")
         dataset = self.dataset
         factors = min(self.factors, self.d, 10)
-        vips = ["VIP_%s" % i for i in xrange(1,factors+1)]
+        vips = ["VIP_%s" % i for i in range(1,factors+1)]
         variables = " ".join(vips)
         vipdata = [""" DATA: %(vip)s=col(source(s), name("%(vip)s"))""" % {"vip":vip} for vip in vips]
         vipdata = "\n".join(vipdata)
-        vipposition = ["""variable*%(vip)s*1*"%(i)s" """ % {"vip":vip,"i":i} for vip, i in zip(vips, xrange(1, factors+1))]
+        vipposition = ["""variable*%(vip)s*1*"%(i)s" """ % {"vip":vip,"i":i} for vip, i in zip(vips, range(1, factors+1))]
         vipposition = "+".join(vipposition)
         if not dataset:
             return

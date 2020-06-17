@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2020                               -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Jon Peck (SPSS Inc.) -->
 <Command Name="PLS"
     xmlns="http://xml.spss.com/spss/extension" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/extension-1.0.xsd">
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/extension-1.0.xsd" LanguageVersion="3">
   <Subcommand Name="" Occurrence="Required" IsArbitrary="True"/>
   <Subcommand Name="ID">
     <Parameter Name="Variable" ParameterType="VariableName"/>
