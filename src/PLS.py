@@ -1,13 +1,13 @@
 
 #/***********************************************************************
-# * Licensed Materials - Property of IBM 
+# * Licensed Materials - Property of IBM
 # *
 # * IBM SPSS Products: Statistics Common
 # *
 # * (C) Copyright IBM Corp. 1989, 2020
 # *
 # * US Government Users Restricted Rights - Use, duplication or disclosure
-# * restricted by GSA ADP Schedule Contract with IBM Corp. 
+# * restricted by GSA ADP Schedule Contract with IBM Corp.
 # ************************************************************************/"""Partial Least Squares Regression Module"""
 
 __author__ =  'JB, JKP, spss'
@@ -63,7 +63,7 @@ if int(spssaux.__version__[0]) < 2 or int(spssdata.__version__[0]) < 2:
 #if int(extension.__version__[0]) < 1 or (int(extension.__version__[0]) == 1 and int(extension.__version__[2]) < 1):
 #	print """This module requires at least version 1.1.0 of spssaux and spssdata.  Please download a newer version from SPSS Developer Central"""
 #	raise ImportError
-if [int(v) for v in extension.__version__.split(".")] < [1,1,0]:	  
+if [int(v) for v in extension.__version__.split(".")] < [1,1,0]:
     print("""This module requires at least version 1.1.0 of extension.py.  Please download a newer version from SPSS Developer Central""")
     raise ImportError
 from extension import Syntax, Template
@@ -86,7 +86,7 @@ except ImportError as e:
 
 try:
     from numpy import *
-    from scipy import linalg, Inf, random, sparse
+    from scipy import linalg, Inf, sparse
 except:
     print("""This module requires scipy and numpy.  One or more was not found.  Please download
               from www.scipy.org and try again.  Be sure to get the version matching your Python version.""")
@@ -127,11 +127,11 @@ def Run(args):
             _("---")
         except:
             def _(msg):
-                return msg        
+                return msg
 
         #dsn = spssaux.GetActiveDatasetName()
         dsn = spss.ActiveDataset()
-        if not dsn or dsn == "*": 
+        if not dsn or dsn == "*":
             dsn = "PLS_active_data_%s" % str(random.uniform(0,1))
             spss.Submit("DATASET NAME %s WINDOW=ASIS ." % dsn)
 
@@ -262,7 +262,7 @@ class PLSSyntaxArguments(SyntaxArguments):
         self.dsnpredictors = params.get('dsnpredictors')
 
     def parseVariables(self):
-        """separate tokenlist into dependent, BY, and WITH; 
+        """separate tokenlist into dependent, BY, and WITH;
         also expand TO, respond to MLEVEL and REFERENCE
         """
 
@@ -332,7 +332,7 @@ class PLSSyntaxArguments(SyntaxArguments):
 #        wth = [w for w in tokenList[withindex:] if w in wth]
 #        by = [b for b in tokenList[byindex:] if b in by]
 #        print wth
-#        print by        
+#        print by
         vars = [v for v in varlist if v in vars]
         self.processVariableList(vars)    # sets vars, categorical, refcat
 #        self.by = by
@@ -387,7 +387,7 @@ class PLSSyntaxArguments(SyntaxArguments):
                 else:
                     self.appendNotification(_("Illegal syntax: %s encountered after variable %s, without required =.") % (keyword, var))
                     return search[1:], None
-        return search, None        
+        return search, None
 
 
 class PLSSyntaxException(Exception):
@@ -423,13 +423,13 @@ class PLSController(object):
         self._getDesign()
 #		# easier to unpack args here so they will be locals()
 #						    dsn=self.dsn,
-#						    dependent=self.dependent, 
-#							categorical=self.categorical, 
-#							refcats = self.refcats, 
-#							factors=self.factors, 
-#							covariates=self.covariates, 
-#							model=self.model, 
-#							designdsn=self.designdsn, 
+#						    dependent=self.dependent,
+#							categorical=self.categorical,
+#							refcats = self.refcats,
+#							factors=self.factors,
+#							covariates=self.covariates,
+#							model=self.model,
+#							designdsn=self.designdsn,
 #							idvariable=self.idvariable)
 
     def _validateArguments(self):
@@ -459,7 +459,7 @@ class PLSController(object):
             args.appendNotification(_("PLS: Dependent variable %s removed from factor list.") % d)
             #self.factors.remove(d)
         unique, dup = PLSController._removeDuplicates(self.factors, list(dup))
-        self.factors = unique													  
+        self.factors = unique
 
         if dup: factors = set(unique)
         dup = dependent.intersection(covariates)
@@ -467,7 +467,7 @@ class PLSController(object):
             args.appendNotification(_("PLS: Dependent variable %s removed from covariate list.") % d)
             #self.covariates.remove(d)
         unique, dup = PLSController._removeDuplicates(self.covariates, list(dup))
-        self.covariates = unique			
+        self.covariates = unique
 
         if dup: covariates = set(self.covariates)
         if not factors.union(covariates):
@@ -513,7 +513,7 @@ class PLSController(object):
 
         self.split = spss.GetSplitVariableNames()	#spssaux.GetDatasetInfo("SplitFile")
         if self.split:
-            raise PLSSyntaxException(_("Split File is not supported."))		
+            raise PLSSyntaxException(_("Split File is not supported."))
 
     @staticmethod
     def _isValid(variable, varDict):
@@ -550,7 +550,7 @@ class PLSController(object):
         args = self.arguments
         dsn=self.dsn
         dependent=self.dependent
-        categorical=self.categorical 
+        categorical=self.categorical
         refcats = self.refcats
         factors=self.factors
         covariates=self.covariates
@@ -793,7 +793,7 @@ DELETE VARIABLES idcase__ .
         label = [lab.strip("[]") for lab in label.split("]*[")]
         label = [lab.split("=") for lab in label]
         label = [(lab[0], "=".join(lab[1:])) for lab in label]
-        label = tuple(label)		
+        label = tuple(label)
         return label
 
     @staticmethod
@@ -801,7 +801,7 @@ DELETE VARIABLES idcase__ .
         try:
             p1index = labels.index("P1")
             if names[p1index][0] != "P": p1index = False
-            # design variable should be named P followed by 1 or more digits...	
+            # design variable should be named P followed by 1 or more digits...
             # could check to make sure next char is a digit also
         except:
             p1index = False
@@ -827,7 +827,7 @@ DELETE VARIABLES idcase__ .
         xvars = self.xvars
         yvars = self.yvars
         d = self.latentfactors
-        return PartialLeastSquares.PLS(xvars, yvars, d)		
+        return PartialLeastSquares.PLS(xvars, yvars, d)
 
 class PartialLeastSquares(object):
     def __init__(self, xvars, yvars, X, Y, d, xlabels, ylabels, weight=None, split=[]):
@@ -883,7 +883,7 @@ class PartialLeastSquares(object):
         This is a bridge between SPSS and NumPy/SciPy.
         This function gets data from an SPSS cursor, and uses it
         to populate SciPy matrix objects.  The PLS object returned
-        does not depend on SPSS in any way, only SciPy.		
+        does not depend on SPSS in any way, only SciPy.
         """
         try:
             numx = len(xvars)
@@ -934,7 +934,7 @@ class PartialLeastSquares(object):
                     self.appendNotification(_("No more than %s latent factors can be extracted.") % i)
                     break
                 else:
-                    p, q = self.deflate()	
+                    p, q = self.deflate()
 
         B = self.W * (self.P.T * self.W).I * self.C.T
         B = multiply(1.0/matrix(self.xsd).T, B)
@@ -950,9 +950,9 @@ class PartialLeastSquares(object):
     def unit(x):
         return x / linalg.norm(x)
 
-    @staticmethod	
+    @staticmethod
     def zscore(A, minstd=0.):
-        """standardize columns to mean 0, std 1. 
+        """standardize columns to mean 0, std 1.
         Return vectors of means and standard deviations, a list of columns with nonzero variance, and a list of columns
         with standard deviation <= minstd
         If a column standard deviation is below the threshold, it is not changed."""
@@ -988,15 +988,15 @@ class PartialLeastSquares(object):
             A = self._eigenprob()
         return self.c.T * A * self.c
 
-    @staticmethod	
+    @staticmethod
     def extractEigenvector(A, iterates=100, converge=1e-16, powerIterates=3, powerConverge=1e-10):
         n, m = A.shape
         assert n == m, "Square matrix required"
-        x, lamb = PartialLeastSquares.extractEigenvectorPowerMethod(A, powerIterates, powerConverge)	
+        x, lamb = PartialLeastSquares.extractEigenvectorPowerMethod(A, powerIterates, powerConverge)
         x, lamb = PartialLeastSquares.extractEigenvectorRayleighQuotientIteration(A, x, lamb, iterates=20, converge=1e-7)
         return (x, lamb)
 
-    @staticmethod	
+    @staticmethod
     def extractEigenvectorPowerMethod(A, iterates=1, converge=1e-6):
         n, m = A.shape
         assert n == m, "Square matrix required"
@@ -1017,7 +1017,7 @@ class PartialLeastSquares(object):
             i += 1
         return (x, lamb)
 
-    @staticmethod	
+    @staticmethod
     def extractEigenvectorRayleighQuotientIteration(A, x, lamb, iterates=20, converge=1e-7):
         n, m = A.shape
         assert n == m, "Square matrix required"
@@ -1060,7 +1060,7 @@ class PartialLeastSquares(object):
             #print "RQI:",i, delta, lamb
             x = w
             i += 1
-        return (x, lamb)	
+        return (x, lamb)
 
     def _calculateSumsOfSquares(self):
         """Assumes plsRegression has been called..."""
@@ -1091,7 +1091,7 @@ class PartialLeastSquares(object):
         vip = self.n*vip/cumsum(self.ssy)
         vip = sqrt(vip)
         vip = vip.real
-        return vip	
+        return vip
 
     def _eigenprob(self):
         # for now always take m as the smallest dimension
@@ -1207,7 +1207,7 @@ class PartialLeastSquares(object):
         d2 = sum((N/float(N-d-1)) * matrix(power(A, 2)), axis=1)
         return sqrt(d2).real
 
-    # TODO: use a common interface for notifications	
+    # TODO: use a common interface for notifications
     def __getNotifications(self):
         return self.__notifications
 
@@ -1264,7 +1264,7 @@ class OutDataset(object):
                 missinglabel = {missing[0]:"."}
             else:
                 missinglabel = None
-            curs.append(spssdata.vdef(vname, 0, vlbl, valuelabels=missinglabel, missingvalues=missing))  #define new variable		
+            curs.append(spssdata.vdef(vname, 0, vlbl, valuelabels=missinglabel, missingvalues=missing))  #define new variable
         return newvars
 
     def _mungeLabel(self, label):
@@ -1317,7 +1317,7 @@ class OutDataset(object):
             curs.CommitCase()
             # could check X - xhat against E, Y - yhat against F here
 
-class OutDatasetPredResid(OutDataset):				
+class OutDatasetPredResid(OutDataset):
     def __init__(self, datasetname, pls, predicted=True, residuals=True, scores=True, distances=False):
         super(OutDatasetPredResid, self).__init__(datasetname, pls)
         #self.pls = pls
@@ -1363,7 +1363,7 @@ class OutDatasetPredResid(OutDataset):
         curs.commitdict()
         return matrices
 
-class OutDatasetWeightsLoadings(OutDataset):		
+class OutDatasetWeightsLoadings(OutDataset):
     def __init__(self, datasetname, pls, weights=True, loadings=True):
         super(OutDatasetWeightsLoadings, self).__init__(datasetname, pls)
         curs = spssdata.Spssdata(indexes=[], dataset=None, omitmissing = True, accessType='n')
@@ -1381,36 +1381,36 @@ class OutDatasetWeightsLoadings(OutDataset):
             W = self.pls.W
             W = W * (self.pls.P.T * W).I	# here W is really W*
             vlbl = _("PLS weights %s ")
-            self._appendVarsToCursor(curs, range(1,self.pls.d+1), vlbl, "weight")						
+            self._appendVarsToCursor(curs, range(1,self.pls.d+1), vlbl, "weight")
             matrices.append(concatenate((W, self.pls.C), axis=0))
         if loadings:
             vlbl = _("PLS loadings %s ")
-            self._appendVarsToCursor(curs, range(1,self.pls.d+1), vlbl, "loading")						
+            self._appendVarsToCursor(curs, range(1,self.pls.d+1), vlbl, "loading")
             matrices.append(concatenate((self.pls.P, self.pls.Q), axis=0))
         curs.commitdict()
         return  matrices
 
-class OutDatasetPredictors(OutDataset):					
+class OutDatasetPredictors(OutDataset):
     def __init__(self, datasetname, pls, parameters=True, vip=True):
         super(OutDatasetPredictors, self).__init__(datasetname, pls)
         curs = spssdata.Spssdata(indexes=[], dataset=None, omitmissing = True, accessType='n')
         matrices = self.createDictionary(curs, parameters, vip)
         self._appendNewCases(curs, matrices, varnames=["(Constant)"] + self.pls.xlabels)
         curs.CClose()
-        spss.Submit("DATASET NAME %s WINDOW=ASIS ." % datasetname)			
+        spss.Submit("DATASET NAME %s WINDOW=ASIS ." % datasetname)
 
     def createDictionary(self, curs, parameters=True, vip=True):
         matrices = []
         curs.append(spssdata.vdef("variable", max([len(vname)for vname in ["(Constant)"] + self.pls.xlabels]), "Variable"))
         if parameters:
             vlbl = _("PLS parameters %s ")
-            self._appendVarsToCursor(curs, self.pls.ylabels, vlbl, "B_")						
+            self._appendVarsToCursor(curs, self.pls.ylabels, vlbl, "B_")
             matrices.append(concatenate((self.pls.intercept, self.pls.B)))
         if vip:
             vlbl = _("PLS VIP %s ")
             # set vipvars to have user missing = -99999
             sysmiss = None	#-99999
-            vipvars = self._appendVarsToCursor(curs, range(1,self.pls.d+1), vlbl, "VIP_", missing=[-99999])						
+            vipvars = self._appendVarsToCursor(curs, range(1,self.pls.d+1), vlbl, "VIP_", missing=[-99999])
             matrices.append(concatenate((matrix([None]*self.pls.d), self.pls.vip)))
         curs.commitdict()
         return matrices
@@ -1431,9 +1431,9 @@ class SPSSProcedure(object):
             self._started = False
 
     def matrixToTable(self,
-                      theMatrix, 
+                      theMatrix,
                       title,
-                      caption="", 
+                      caption="",
                       rowdim="Rows",
                       rowlabels=None,
                       coldim="Cols",
@@ -1512,7 +1512,7 @@ class PLSRegressionProcedure(SPSSProcedure):
         v = concatenate((v, r2adj))
 
         self.matrixToTable(v.T,
-                           title=_("Proportion of Variance Explained"), 
+                           title=_("Proportion of Variance Explained"),
                            caption="",
                            rowdim=_("Latent Factors"),
                            rowlabels=None,
@@ -1521,7 +1521,7 @@ class PLSRegressionProcedure(SPSSProcedure):
 
     def outputParameters(self):
         self.matrixToTable(concatenate((self.pls.intercept, self.pls.B)),
-                           title=_("Parameters"), 
+                           title=_("Parameters"),
                            caption="",
                            rowdim=_("Independent Variables"),
                            rowlabels=[_("(Constant)")] + self.pls.xlabels,
@@ -1529,8 +1529,8 @@ class PLSRegressionProcedure(SPSSProcedure):
                            collabels=self.pls.ylabels)
 
     def outputVIP(self):
-        self.matrixToTable(self.pls.vip, 
-                           title=_("Variable Importance in the Projection"), 
+        self.matrixToTable(self.pls.vip,
+                           title=_("Variable Importance in the Projection"),
                            caption=_("Cumulative Variable Importance"),
                            rowdim=_("Variables"),
                            rowlabels=self.pls.xlabels,
@@ -1542,8 +1542,8 @@ class PLSRegressionProcedure(SPSSProcedure):
         # W_star = W*(P.T*W).I
         W = self.pls.W
         W = W * (self.pls.P.T * W).I	# here W is really W*
-        self.matrixToTable(concatenate((W, self.pls.C)), 
-                           title=_("Weights"), 
+        self.matrixToTable(concatenate((W, self.pls.C)),
+                           title=_("Weights"),
                            caption="",
                            rowdim=_("Variables"),
                            rowlabels=self.pls.xlabels+self.pls.ylabels,
@@ -1553,21 +1553,21 @@ class PLSRegressionProcedure(SPSSProcedure):
     # N.B. should be very similar to Weights
     def outputLoadings(self):
         self.matrixToTable(concatenate((self.pls.P, self.pls.Q)),
-                           title=_("Loadings"), 
+                           title=_("Loadings"),
                            caption="",
                            rowdim=_("Variables"),
                            rowlabels=self.pls.xlabels+self.pls.ylabels,
                            coldim=_("Latent Factors"),
                            collabels=None)
 
-    # TODO: rework this to have a second dimension, 
+    # TODO: rework this to have a second dimension,
     # with categories "X-scores" and "Y-scores"
     # i.e. no longer use .simpleOutputTable
     def outputScores(self):
         scorelabels = [_("X-score %s") % i for i in range(1, self.pls.d+1)]
         scorelabels += [_("Y-score %s") % i for i in range(1, self.pls.d+1)]
-        self.matrixToTable(concatenate((self.pls.T, self.pls.U), axis=1), 
-                           title=_("Scores"), 
+        self.matrixToTable(concatenate((self.pls.T, self.pls.U), axis=1),
+                           title=_("Scores"),
                            caption=_("Standardized Scores"),
                            rowdim=_("Cases"),
                            rowlabels=None,	# TODO: id variable
@@ -1667,7 +1667,7 @@ class Plot(object):
         self.d = d
         self.dataset = dataset
         self.N = N	# N=0 implies no limit
-        self.maxCases = maxCases		
+        self.maxCases = maxCases
 
     def plot(self):
         assert False, "Plot object is an abstract superclass, plot method must be overridden."
@@ -1744,7 +1744,7 @@ class SPLOM(Plot):
     def plot(self, variables, variableLabels, yvariables=[], yvariableLabels=[], title=None):
         if title is None:
             title = _("Scores")
-        dataset = self.dataset		
+        dataset = self.dataset
         variables = variables[:self.maxVariables]
         yvariables = yvariables[:self.maxVariables]
         vars = " ".join(variables+yvariables)
@@ -1775,7 +1775,7 @@ class SPLOM(Plot):
             iddata = """
                                DATA: id=col(source(s), name("%s"))
 """ % id
-            # make the id variable available, 
+            # make the id variable available,
             # but don't use it by default
             #idlabel = ", label(id)"
             idlabel = ""
@@ -1822,7 +1822,7 @@ class FactorPlot(Plot):
         ggraph = """DATASET ACTIVATE %(dataset)s WINDOW=ASIS .
 * Chart Builder.
 GGRAPH
-                       /GRAPHDATASET NAME="graphdataset" 
+                       /GRAPHDATASET NAME="graphdataset"
                        VARIABLES=%(x)s %(y)s variable
                        MISSING=LISTWISE REPORTMISSING=NO
                        /GRAPHSPEC SOURCE=INLINE %(graphlabel)s.
@@ -1857,7 +1857,7 @@ class VIPPlot(Plot):
         ggraph = """DATASET ACTIVATE %(dataset)s WINDOW=ASIS .
 * Chart Builder.
 GGRAPH
-                       /GRAPHDATASET NAME="graphdataset" VARIABLES=variable VIP_%(i)s 
+                       /GRAPHDATASET NAME="graphdataset" VARIABLES=variable VIP_%(i)s
                        MISSING=LISTWISE REPORTMISSING=NO
                        /GRAPHSPEC SOURCE=INLINE %(graphlabel)s.
 BEGIN GPL
