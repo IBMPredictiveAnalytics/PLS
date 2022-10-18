@@ -1,12 +1,12 @@
 # PLS
 ## Partial least squares regression
- This procedure estimates partial least squares (PLS, also known as "projection to latent structure") regression models. PLS is a predictive technique that is an alternative to ordinary least squares (OLS) regression, canonical correlation, or structural equation modeling, and it is particularly useful when predictor variables are highly correlated or when the number of predictors exceeds the number of cases. 
+This procedure estimates partial least squares (PLS, also known as "projection to latent structure") regression models. PLS is a predictive technique that is an alternative to ordinary least squares (OLS) regression, canonical correlation, or structural equation modeling, and it is particularly useful when predictor variables are highly correlated or when the number of predictors exceeds the number of cases. 
 
 ---
 Installation intructions
 ----
 1. Open IBM SPSS Statistics
-2. Navigate to Utilities -> Extension Bundles -> Download and Install Extension Bundles
+2. Navigate to Utilities → Extension Bundles → Download and Install Extension Bundles
 3. Search for the name of the extension and click Ok. Your extension will be available.
 
 ---
