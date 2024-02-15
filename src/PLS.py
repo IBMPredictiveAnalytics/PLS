@@ -11,7 +11,7 @@
 # ************************************************************************/"""Partial Least Squares Regression Module"""
 
 __author__ =  'JB, JKP, spss'
-__version__=  '1.1.6'
+__version__=  '1.1.7'
 
 #Licensed Materials - Property of IBM
 #IBM SPSS Products: Statistics General
@@ -28,26 +28,21 @@ __version__=  '1.1.6'
 # 19-nov-2014 handle case of no covariates
 # 13-mar-2018 change None test to "is" to avoid warning exception
 # 31-may-2018 removed xtype arg from cg call as it is no longer defined in cg interface
+# 14-feb-2024 update to reflect Inf moved from scipy to numpy
 
 import spss, re
 from random import uniform
 import textwrap
 
 # debugging
-    # makes debug apply only to the current thread
-#try:
-    #import wingdbstub
-    #if wingdbstub.debugger != None:
-        #import time
-        #wingdbstub.debugger.StopDebug()
-        #time.sleep(1)
-        #wingdbstub.debugger.StartDebug()
-    #import thread
-    #wingdbstub.debugger.SetDebugThreads({thread.get_ident(): 1}, default_policy=0)
-    ## for V19 use
-    ###    ###SpssClient._heartBeat(False)
-#except:
-    #pass
+        # makes debug apply only to the current thread
+try:
+    import wingdbstub
+    import threading
+    wingdbstub.Ensure()
+    wingdbstub.debugger.SetDebugThreads({threading.get_ident(): 1})
+except:
+    pass
 
 try:
     import spssaux, spssdata, extension
@@ -86,7 +81,8 @@ except ImportError as e:
 
 try:
     from numpy import *
-    from scipy import linalg, Inf, sparse
+    from numpy import Inf    # 2/14/2024 Inf was removed from Scipy at some point
+    from scipy import linalg, sparse
 except:
     print("""This module requires scipy and numpy.  One or more was not found.  Please download
               from www.scipy.org and try again.  Be sure to get the version matching your Python version.""")

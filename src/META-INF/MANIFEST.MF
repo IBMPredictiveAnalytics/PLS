@@ -1,5 +1,4 @@
 Name: PLS
-Display-Name: Partial Least Squares Regression
 Command-Specs: plscommand.xml
 Code-Files: PLS.py
 Misc-Files: enabling_pls.pdf
@@ -9,10 +8,10 @@ Description: This procedure estimates partial least squares (PLS, also
   a predictive technique that is an alternative to ordinary least squa
  res (OLS) regression, canonical correlation, or structural equation m
  odeling, and it is particularly useful when predictor variables are h
- ighly correlated or when the number of predictors exceeds the number
- of cases.
+ ighly correlated or when the number of predictors exceeds the number 
+ of cases. 
 Author: IBM SPSS JKP, JMB
-Version: 2.0.1
+Version: 2.0.2
 Product-Version: 24
 Date: 1/2/2014
 Product-Version-Maximum: 99
