@@ -29,6 +29,7 @@ __version__=  '1.1.7'
 # 13-mar-2018 change None test to "is" to avoid warning exception
 # 31-may-2018 removed xtype arg from cg call as it is no longer defined in cg interface
 # 14-feb-2024 update to reflect Inf moved from scipy to numpy
+# 12-apr-2024 update for numpy 2 changes
 
 import spss, re
 from random import uniform
@@ -81,7 +82,8 @@ except ImportError as e:
 
 try:
     from numpy import *
-    from numpy import Inf    # 2/14/2024 Inf was removed from Scipy at some point
+    ###from numpy import Inf    # 2/14/2024 Inf was removed from Scipy at some point
+    from numpy import inf    # numpy 2 issue
     from scipy import linalg, sparse
 except:
     print("""This module requires scipy and numpy.  One or more was not found.  Please download
@@ -1000,7 +1002,7 @@ class PartialLeastSquares(object):
         x0 = PartialLeastSquares.unit(x0)
         x0 = A*x0
         lamb = 0.0
-        delta = linalg.norm(x0, Inf)
+        delta = linalg.norm(x0, inf)
         x = x0
         i = 0
         while delta > converge and i < iterates:
@@ -1008,7 +1010,7 @@ class PartialLeastSquares(object):
             lamb = x0.T*x	# = x0.T*A*x0
             x = x/linalg.norm(x)
             #print x-x0, lamb
-            delta = linalg.norm(x - x0, Inf)	# L1 norm, (?) or L2
+            delta = linalg.norm(x - x0, inf)	# L1 norm, (?) or L2
             x0 = x
             i += 1
         return (x, lamb)
@@ -1052,7 +1054,7 @@ class PartialLeastSquares(object):
                 w = x
             lamb = w.T*A*w	# omit dividing by norm since w is a unit vector
             #lamb = lamb[0][0]
-            delta = linalg.norm(w - x, Inf)	# L1 norm, (?) or L2
+            delta = linalg.norm(w - x, inf)	# L1 norm, (?) or L2
             #print "RQI:",i, delta, lamb
             x = w
             i += 1
@@ -1138,7 +1140,7 @@ class PartialLeastSquares(object):
         return True
 
     @staticmethod
-    def distance(x0, x1, p=Inf):
+    def distance(x0, x1, p=inf):
         # probably use a try block instead
         if (x0 is not None) and (x1 is not None):
             delta = linalg.norm(x1 - x0, p)

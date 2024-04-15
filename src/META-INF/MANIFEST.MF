@@ -11,7 +11,7 @@ Description: This procedure estimates partial least squares (PLS, also
  ighly correlated or when the number of predictors exceeds the number 
  of cases. 
 Author: IBM SPSS JKP, JMB
-Version: 2.0.2
+Version: 2.0.3
 Product-Version: 24
 Date: 1/2/2014
 Product-Version-Maximum: 99
