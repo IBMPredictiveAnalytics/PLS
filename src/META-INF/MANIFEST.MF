@@ -1,5 +1,4 @@
 Name: PLS
-Display-Name: Partial Least Squares (PLS)
 Command-Specs: plscommand.xml
 Code-Files: PLS.py
 Misc-Files: enabling_pls.pdf
@@ -12,13 +11,12 @@ Description: This procedure estimates partial least squares (PLS, also
  ighly correlated or when the number of predictors exceeds the number 
  of cases. 
 Author: IBM SPSS JKP, JMB
-Version: 2.0.4
+Version: 2.1.0
 Product-Version: 24
 Date: 1/2/2014
 Product-Version-Maximum: 99
-Categories: regression, partial least squares, latent
+Categories: regression, partial least squares, latent PLS
 Plugins: Python
 Python-Version: 3
 Python-Modules: scipy,numpy
-Python-Module-Versions: scipy,numpy;<;2.0
 Translation-Catalogues: lang

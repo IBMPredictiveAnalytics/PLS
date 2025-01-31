@@ -4,14 +4,14 @@
 # *
 # * IBM SPSS Products: Statistics Common
 # *
-# * (C) Copyright IBM Corp. 1989, 2020
+# * (C) Copyright IBM Corp. 1989, 2025
 # *
 # * US Government Users Restricted Rights - Use, duplication or disclosure
 # * restricted by GSA ADP Schedule Contract with IBM Corp.
 # ************************************************************************/"""Partial Least Squares Regression Module"""
 
 __author__ =  'JB, JKP, spss'
-__version__=  '1.1.7'
+__version__=  '1.1.2'
 
 #Licensed Materials - Property of IBM
 #IBM SPSS Products: Statistics General
@@ -30,6 +30,7 @@ __version__=  '1.1.7'
 # 31-may-2018 removed xtype arg from cg call as it is no longer defined in cg interface
 # 14-feb-2024 update to reflect Inf moved from scipy to numpy
 # 12-apr-2024 update for numpy 2 changes
+# 29-jan-2025 more updates for numpy 2 change
 
 import spss, re
 from random import uniform
@@ -44,6 +45,22 @@ try:
     wingdbstub.debugger.SetDebugThreads({threading.get_ident(): 1})
 except:
     pass
+
+# Unfortunately, the PLS code imports everything from numpy and scipy.
+# The result is that these items can replace other functions with the same
+# used here.
+# In particular, the min and max core functions were replaced by numpy min and max
+# which caused serious problems.
+# The two following names were added to get around this problem and references were
+# updated.  It could happen again, but without knowing all the numpy and scipy functions
+# used, it is hard to remove the everything import
+
+mymin = min
+mymax = max
+
+# In numpy 2.0, the mat function was removed, but the version checking tool did not
+# report this.  It was found in the numpy source code that asmatrix should be used instead,
+# so PLS coded was updated for that.
 
 try:
     import spssaux, spssdata, extension
@@ -302,7 +319,7 @@ class PLSSyntaxArguments(SyntaxArguments):
         except:
             withindex = len(tokenList)
             wth = set()
-        varlist = tokenList[:min(byindex, withindex)]
+        varlist = tokenList[:mymin(byindex, withindex)]
         vars = set(varlist)
         if byindex < withindex:
             by = set(tokenList[byindex:withindex])    #by.difference(wth)
@@ -756,7 +773,7 @@ DELETE VARIABLES idcase__ .
                     numcats = [float(label) for label in labels]
                     numref = float(ref)
                     diff = [abs(numcat - numref) for numcat in numcats]
-                    mindiff = min(diff)
+                    mindiff = mymin(diff)
                     if mindiff < 1e-6:
                         index = diff.index(mindiff)
                         refcatvars.append(cats[index])
@@ -846,7 +863,7 @@ class PartialLeastSquares(object):
         yN, ym = Y.shape
         self.m = ym
         assert  xN == yN, "Incommensurate matrices"
-        self.d = min(d, xn, xN)
+        self.d = mymin(d, xn, xN)
         self.p = None
         self.q = None
         self.P = None
@@ -896,9 +913,9 @@ class PartialLeastSquares(object):
             ylabels = [vardict.VariableLabel(var) for var in yvars]
             ylabels = [ylab if ylab else var for ylab, var in zip(ylabels, yvars)]
 
-            data = mat(curs.fetchall())
-            Ymat = mat(take(data, indices= list(range(0,numy)), axis=1))
-            Xmat = mat(take(data, indices = list(range(numy, numx+numy)), axis=1))
+            data = asmatrix(curs.fetchall())
+            Ymat = asmatrix(take(data, indices= list(range(0,numy)), axis=1))
+            Xmat = asmatrix(take(data, indices = list(range(numy, numx+numy)), axis=1))
             curs.CClose()
         except linalg.LinAlgError:
             print(_("PLS result cannot be computed due to singularity"))
@@ -998,7 +1015,7 @@ class PartialLeastSquares(object):
     def extractEigenvectorPowerMethod(A, iterates=1, converge=1e-6):
         n, m = A.shape
         assert n == m, "Square matrix required"
-        x0 = mat([1.0]*n,dtype=float64).T
+        x0 = asmatrix([1.0]*n,dtype=float64).T
         x0 = PartialLeastSquares.unit(x0)
         x0 = A*x0
         lamb = 0.0
@@ -1020,13 +1037,13 @@ class PartialLeastSquares(object):
         n, m = A.shape
         assert n == m, "Square matrix required"
         if (n,m) ==(1,1):
-            return (mat([1.0],dtype=float64), A)
+            return (asmatrix([1.0],dtype=float64), A)
         delta = 1e8
         i = 0
         x = x/linalg.norm(x)	# just to be sure
         while delta > converge and i < iterates:
             if (n,m) == (1,1):
-                w = mat([1.0],dtype=float64)
+                w = asmatrix([1.0],dtype=float64)
             else:
                 # The linalg.cg routine was deprecated somewhere between numpy 1.0 and 1.3, but
                 # the sparse.linalg.cg routine does not exist in some earlier versions, so try the newer
@@ -1042,7 +1059,7 @@ class PartialLeastSquares(object):
                         from linalg import cg  # give up if this fails
                 ###w, info = cg(A - multiply(lamb,identity(n)), x, xtype=0)	# was: multiply(lamb,identity(n))
                 w, info = cg(A - multiply(lamb,identity(n)), x)	# removed xtype=0, which is no longer defined
-                w = mat(w,dtype=float64)
+                w = asmatrix(w,dtype=float64)
             # what is going wrong when A is 1x1?  i.e. A - lamb*I = 0
             # then eigvector is 1
             if w[0,0]*x[0,0] < 0:
@@ -1109,7 +1126,7 @@ class PartialLeastSquares(object):
         c = self.c
         if c is None:
             N, m = Y.shape
-            c = PartialLeastSquares.unit(mat([1]*m))
+            c = PartialLeastSquares.unit(asmatrix([1]*m))
             c = c.T
         u = Y*c
         w = X.T*u	#   Xd.T*(Yd*c)
@@ -1192,8 +1209,8 @@ class PartialLeastSquares(object):
         return (p, q)
 
     def _predictions(self):
-        Xsd = mat(self.xsd)
-        Ysd = mat(self.ysd)
+        Xsd = asmatrix(self.xsd)
+        Ysd = asmatrix(self.ysd)
         #err = 0
         intercept = self.ymean - self.xmean*self.B
         xhat = multiply((self.T * self.P.T) , Xsd) + self.xmean
@@ -1399,7 +1416,7 @@ class OutDatasetPredictors(OutDataset):
 
     def createDictionary(self, curs, parameters=True, vip=True):
         matrices = []
-        curs.append(spssdata.vdef("variable", max([len(vname)for vname in ["(Constant)"] + self.pls.xlabels]), "Variable"))
+        curs.append(spssdata.vdef("variable", mymax([len(vname)for vname in ["(Constant)"] + self.pls.xlabels]), "Variable"))
         if parameters:
             vlbl = _("PLS parameters %s ")
             self._appendVarsToCursor(curs, self.pls.ylabels, vlbl, "B_")
@@ -1881,7 +1898,7 @@ class VIPPlots(Plot):
         if title is None:
             title=_("Cumulative Variable Importance")
         dataset = self.dataset
-        factors = min(self.factors, self.d, 10)
+        factors = mymin(self.factors, self.d, 10)
         vips = ["VIP_%s" % i for i in range(1,factors+1)]
         variables = " ".join(vips)
         vipdata = [""" DATA: %(vip)s=col(source(s), name("%(vip)s"))""" % {"vip":vip} for vip in vips]
