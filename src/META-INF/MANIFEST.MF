@@ -1,5 +1,4 @@
 Name: PLS
-Display-Name: Partial Least Squares Regression
 Command-Specs: plscommand.xml
 Code-Files: PLS.py
 Misc-Files: enabling_pls.pdf
